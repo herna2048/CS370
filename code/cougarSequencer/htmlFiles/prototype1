@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"> <!--sets English as the primary languague-->
+<head>
+    <meta charset="UTF-8"> <!--uses this coding standard gor global text usuage-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--adjusts layout and layotu sizing-->
+    <title> Sequencer Graph Prototype </title>
+    <style> /*this section will be used for customization*/
+        :root {
+            --bg-color: #032B44;
+            --grid-line: #FFFFFF;
+            --active-note: #FFFFFF;
+        }
+
+        body {
+             background-color: var(--bg-color);
+             color: #FFFFFF; /*default text color(white)*/
+             display: flex; /*activates flexbot module which will eventually help with allignment*/
+             justify-content: center;
+             align-items: center;
+             min-height: 100vh; /* the minimum height is 100 percent of the window but it can grow if expanded*/
+             box-sizing: border-box; /*helps prevent breaking the grid when we size it*/
+        }
+
+        .grid-container{
+            display: grid; /*CSS grid properties*/
+            grid-template-columns: repeat(24,1fr);
+            grid-template-rows: repeat(24,1fr);
+            gap: 1px;
+            background-color: var(--grid-line);
+            width: min(85vw,85vh);
+            height: min(85vw, 85vh);
+            border: 2px solid var(--grid-line);        
+        }
+
+        .cell{
+            background-color: var(--bg-color);
+            cursor:pointer; /*switches the mouse to the hand because I like that better and its cute*/  
+        }
+
+        .cell:hover{
+          background-color:#82948f /*a grey color that appear when the cursor hovers over a box/note*/
+        }
+
+        .cell.active{
+            background-color: var(--active-note);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sequencer-container">
+        <h1 class="sequencer-title">Piano</h1>
+        <div class="grid-container" id="sequencerGrid"></div>
+
+    </div>
+
+    <script>
+        const grid=document.getElementById('sequencerGrid');
+        const totalCells=24*24;
+
+        for(let i=0; i < totalCells; i++ ) {
+           const cell= document.createElement('div');
+           cell.classList.add("cell");
+
+           cell.addEventListener('click', () => {
+               cell.classList.toggle('active');
+           });
+
+           grid.appendChild(cell);
+
+        }
+    </script>
+</body>
+</html>
