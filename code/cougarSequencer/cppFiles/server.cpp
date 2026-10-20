@@ -10,6 +10,7 @@
 
 using namespace std;
 
+// All of the rules for the crow for POST, GET, etc...
 struct CORSRules {
     struct context {};
     void before_handle(crow::request&, crow::response&, context&) {}
@@ -22,24 +23,30 @@ struct CORSRules {
 
 int main() {
 
+// Connect to the PostGreSQL server through a hardcoded host, port, etc...
 try {
 pqxx::connection conn("host=localhost port=5432 dbname=CougarSequencer user=postgres password=Baseball712 connect_timeout=3");
 
+// if the connection isn't valid
 } catch (const std::exception &e) {
 cerr << e.what() << endl;
 return 1;
 }
 
+// have to do the connection again since the conn is broken when you exit the try and catch
 pqxx::connection conn("host=localhost port=5432 dbname=CougarSequencer user=postgres password=Baseball712");
 
+// creating the app for the crow in order to connect to the server
 crow::App<CORSRules> app;
 
+// initializing the response code to be 204 for no content
 CROW_ROUTE(app, "/<path>").methods(crow::HTTPMethod::OPTIONS)
 ([](crow::response& res, std::string) {
     res.code = 204;
     res.end();
 });
 
+// the get for the greeter button, when you push it, you send out a request which this function then sends back through res["greeter"], reads data
 CROW_ROUTE(app, "/api/greeter").methods(crow::HTTPMethod::GET)
 ([]() {
     crow::json::wvalue res;
@@ -48,10 +55,11 @@ CROW_ROUTE(app, "/api/greeter").methods(crow::HTTPMethod::GET)
     return crow::response(200, res);
 });
         
-
+// the POST for when you request to submit data for the database to insert in username and password
 CROW_ROUTE(app, "/api/register").methods(crow::HTTPMethod::POST)
 ([&conn](const crow::request& req) {
     auto body = crow::json::load(req.body);
+    // check to see if there is a body and it contains what we had sent over in the js
     if (!body || !body.has("username") || !body.has("password")) {
         return crow::response(400, "{\"error\": \"Missing name field\"}");
     }
@@ -65,15 +73,17 @@ CROW_ROUTE(app, "/api/register").methods(crow::HTTPMethod::POST)
     return response;
 });
 
+// the POST for when you request to submit data for the database to select the username to see if it has a corresponding password
 CROW_ROUTE(app, "/api/login").methods(crow::HTTPMethod::POST)
 ([&conn](const crow::request& req) {
     auto body = crow::json::load(req.body);
+    // check to see if there is a body and it contains what we had sent over in the js
     if (!body || !body.has("username") || !body.has("password")) {
         return crow::response(400, "{\"error\": \"Missing name field\"}");
     }
 
     crow::json::wvalue res;
-    // Call function defined in register.cpp
+    // Call function defined in login.cpp
     res["login"] = loginUser(body["username"].s(), body["password"].s(), conn);
 
     crow::response response(res);
