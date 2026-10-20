@@ -8,25 +8,28 @@
 <body>
   <h1>CougarSequencer</h1>
 
+  <!-- The greeter button -->
   <div class="card">
   <button id="greeterBtn">Welcome!</button>
   <div id="greeterOutput" class="result-box"></div>
 </div>
 
+   <!-- The register button -->
 <div class="card">
   <h3>Please Create a New Username and Password</h3>
   <div class="form-row">
-    <input type="text" id="username" placeholder="username" /><br>
+    <input type="text" id="username" placeholder="username" /><br> 
     <input type="text" id="password" placeholder="password" /><br>
     <button id="registertBtn">Send</button>
   </div>
   <div id="registerOutput" class="result-box"></div>
-  <a href="login.html">
+  <a href="login.html">  <!-- To go to the login.html file via hyperlink -->
     <h4>If you already have an account</h4>
   </a>
 </div>
 
-  <script src="../jsFiles/greeting.js"></script>
+  <!-- To involve the JS code for gathering the data that the user submits via button -->
+  <script src="../jsFiles/greeting.js"></script>  
   <script src="../jsFiles/register.js"></script>
 </body>
 </html>
