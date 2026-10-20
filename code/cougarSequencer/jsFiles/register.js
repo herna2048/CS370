@@ -1,5 +1,5 @@
-    // POST
-    document.getElementById('registerBtn').addEventListener('click', async () => {
+     // POST
+    document.getElementById('registertBtn').addEventListener('click', async () => {
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
@@ -10,5 +10,8 @@
       });
 
       const data = await response.json();
-      document.getElementById('registerOutput').innerText = data.greeting;
+      if (data.register === "success")
+        window.location.href = "../htmlFiles/grid.html";
+      else
+        document.getElementById('registerOutput').innerText = data.register;
     });

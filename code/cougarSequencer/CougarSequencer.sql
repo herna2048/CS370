@@ -1,11 +1,4 @@
--- 6.2 Logical Database Requirements
-
--- Specify the logical requirements for any information that is to be placed into a 
--- database, including data entities and their relationships, and Integrity constraints.  
-
--- If the customer provided you with data models, those can be presented here.  
--- ER diagrams (or static class diagrams) can be useful here to show entity 
--- relationships.  Remember a diagram is worth a thousand words of confusing text. 
+-- CougarSequencer ERD
 
 DROP TABLE IF EXISTS songs CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
@@ -32,8 +25,7 @@ CREATE TABLE songs (
 INSERT INTO users (user_name, pass_word) VALUES
 ('CoolUser1',   'Secretpassword123'),
 ('AwesomePerson',   'Musicrules222'),
-('AnnoyedMuscian',    'Ilovethepiano2321')
-ON CONFLICT (username) DO NOTHING;
+('AnnoyedMuscian',    'Ilovethepiano2321');
 
 INSERT INTO songs (user_id, song_name, track) VALUES
 (1,
@@ -58,3 +50,7 @@ INSERT INTO songs (user_id, song_name, track) VALUES
 
 SELECT * FROM users;
 SELECT * FROM songs;
+
+SELECT max(id) FROM users;
+SELECT nextval(pg_get_serial_sequence('users', 'id'));
+SELECT setval(pg_get_serial_sequence('users', 'id'), COALESCE(max(id), 1)) FROM users;

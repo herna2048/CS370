@@ -1,0 +1,6 @@
+To build and compile all of the files
+g++ -std=c++17 server.cpp register.cpp greeter.cpp login.cpp -lpqxx -lpq -lpthread -o server
+To run the program
+./server
+To see the database
+psql -h $(ip route show default | awk '{print $3}') -p 5432 -U postgres -d "CougarSequencer" -c "SELECT * FROM users;"

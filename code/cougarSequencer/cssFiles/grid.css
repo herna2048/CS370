@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en"> <!--sets English as the primary languague-->
-<head>
-    <meta charset="UTF-8"> <!--uses this coding standard gor global text usuage-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--adjusts layout and layotu sizing-->
-    <title> Sequencer Graph Prototype </title>
-    <style> /*this section will be used for customization*/
-        :root {
+:root {
             --bg-color: #032B44;
             --grid-line: #FFFFFF;
             --active-note: #FFFFFF;
@@ -44,31 +37,3 @@
         .cell.active{
             background-color: var(--active-note);
         }
-
-    </style>
-</head>
-<body>
-    <div class="sequencer-container">
-        <h1 class="sequencer-title">Piano</h1>
-        <div class="grid-container" id="sequencerGrid"></div>
-
-    </div>
-
-    <script>
-        const grid=document.getElementById('sequencerGrid');
-        const totalCells=24*24;
-
-        for(let i=0; i < totalCells; i++ ) {
-           const cell= document.createElement('div');
-           cell.classList.add("cell");
-
-           cell.addEventListener('click', () => {
-               cell.classList.toggle('active');
-           });
-
-           grid.appendChild(cell);
-
-        }
-    </script>
-</body>
-</html>
