@@ -10,9 +10,9 @@ std::string loginUser(const std::string& username, const std::string& password, 
         pqxx::work txn(conn);
 
         // 1. Run the parameterized select
-        auto result = txn.exec_params(
-            "SELECT pass_word FROM users WHERE user_name = $1",
-            username
+        auto result = txn.exec(
+        "SELECT pass_word FROM users WHERE user_name = $1",
+        pqxx::params{username}
         );
 
         if (result.empty() or result.size() == 0)

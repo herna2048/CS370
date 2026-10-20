@@ -20,35 +20,17 @@ struct CORSRules {
     }
 };
 
-// std::string getEnvVar(const std::string& key, const std::string& defaultValue) {
-//     const char* val = std::getenv(key.c_str());
-//     return (val != nullptr) ? std::string(val) : defaultValue;
-// }
-
 int main() {
-// string db_host = getEnvVar("DB_HOST", "127.0.0.1");
-// string db_port = getEnvVar("DB_PORT", "5432");
-// string db_name = getEnvVar("DB_NAME", "CougarSequencer");
-// string db_user = getEnvVar("DB_USER", "postgres");
-// string db_pass = getEnvVar("DB_PASS", "Baseball712");
-
-// string conn_str = "host=" + db_host +
-//                     " port=" + db_port +
-//                     " dbname=CougarSequencer" +
-//                     " user=" + db_user +
-//                     " password=" + db_pass;
 
 try {
-// Connect to the database
-// pqxx::connection conn(conn_str);
-pqxx::connection conn("host=192.168.96.1 port=5432 dbname=CougarSequencer user=postgres password=Baseball712");
+pqxx::connection conn("host=localhost port=5432 dbname=CougarSequencer user=postgres password=Baseball712 connect_timeout=3");
 
 } catch (const std::exception &e) {
 cerr << e.what() << endl;
 return 1;
 }
 
-pqxx::connection conn("host=192.168.96.1 port=5432 dbname=CougarSequencer user=postgres password=Baseball712");
+pqxx::connection conn("host=localhost port=5432 dbname=CougarSequencer user=postgres password=Baseball712");
 
 crow::App<CORSRules> app;
 

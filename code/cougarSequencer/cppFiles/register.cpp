@@ -10,10 +10,9 @@ std::string registerUser(const std::string& username, const std::string& passwor
         pqxx::work txn(conn);
 
         // 1. Run the parameterized insert
-        txn.exec_params(
-            "INSERT INTO users (user_name, pass_word) VALUES ($1, $2)",
-            username,
-            password
+        txn.exec(
+        "INSERT INTO users (user_name, pass_word) VALUES ($1, $2)",
+        pqxx::params{username, password}
         );
 
         // 2. CRITICAL: Commit the transaction
