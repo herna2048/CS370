@@ -4,3 +4,5 @@ To run the program
 ./server
 To see the database
 psql -h $(ip route show default | awk '{print $3}') -p 5432 -U postgres -d "CougarSequencer" -c "SELECT * FROM users;"
+To Delete the database
+psql -h $(ip route show default | awk '{print $3}') -p 5432 -U postgres -d "CougarSequencer" -c "TRUNCATE TABLE users RESTART IDENTITY CASCADE;"
