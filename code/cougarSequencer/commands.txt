@@ -1,5 +1,12 @@
-To build and compile all of the files
+To build and compile all of the files (WSL)
 g++ -std=c++17 server.cpp register.cpp greeter.cpp login.cpp -lpqxx -lpq -lpthread -o server
+To build and compile all of the files (Mac)
+g++ -std=c++20 server.cpp register.cpp greeter.cpp login.cpp \
+  -DASIO_NO_DEPRECATED=0 \
+  -I/opt/homebrew/include \
+  -L/opt/homebrew/lib \
+  -L/opt/homebrew/opt/libpq/lib \
+  -lpqxx -lpq -lpthread -o server
 To run the program
 ./server
 To see the database
