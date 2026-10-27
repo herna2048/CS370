@@ -27,15 +27,6 @@ int main() {
 try {
 pqxx::connection conn("host=localhost port=5432 dbname=CougarSequencer user=postgres password=Baseball712 connect_timeout=3");
 
-// if the connection isn't valid
-} catch (const std::exception &e) {
-cerr << e.what() << endl;
-return 1;
-}
-
-// have to do the connection again since the conn is broken when you exit the try and catch
-pqxx::connection conn("host=localhost port=5432 dbname=CougarSequencer user=postgres password=Baseball712");
-
 // creating the app for the crow in order to connect to the server
 crow::App<CORSRules> app;
 
@@ -92,4 +83,10 @@ CROW_ROUTE(app, "/api/login").methods(crow::HTTPMethod::POST)
 });
 
     app.port(18080).run();
+
+// if the connection isn't valid
+} catch (const std::exception &e) {
+cerr << e.what() << endl;
+return 1;
+}
 }

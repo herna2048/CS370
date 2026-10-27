@@ -11,7 +11,7 @@ std::string loginUser(const std::string& username, const std::string& password, 
         pqxx::work txn(conn);
 
         // how to do SQL in C++, sending these parameters of what SQL code you want to run and the parameters that you want to select
-        auto result = txn.exec(
+        auto result = txn.exec_params(
         "SELECT pass_word FROM users WHERE user_name = $1",
         pqxx::params{username}
         );

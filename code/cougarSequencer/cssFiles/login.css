@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+    display:flex;
+    text-align: center;
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: hsl(224, 57%, 52%);
+    color: rgb(255, 255, 255); 
+}
+
+button{
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: hsl(251, 74%, 72%);
+    border:none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover{
+    background-color: hsl(318, 71%, 68%);
+}
+
+.greeter{
+    position: fixed;
+    top: 5%;
+}
+
+#title{
+    font-size: 2rem;
+    padding: 16px;
+}
+
+.login{
+    position: fixed;
+    top: 30%;
+}
+
+#username{
+    margin-bottom:16px;
+}
+
+#password{
+    margin-bottom:16px;
+}
+
+#href{
+    color:aliceblue;
+}

@@ -12,7 +12,7 @@ std::string registerUser(const std::string& username, const std::string& passwor
         pqxx::work txn(conn);
 
         // how to do SQL in C++, sending these parameters of what SQL code you want to run and the parameters that you want to insert
-        txn.exec(
+        txn.exec_params(
         "INSERT INTO users (user_name, pass_word) VALUES ($1, $2)",
         pqxx::params{username, password}
         );

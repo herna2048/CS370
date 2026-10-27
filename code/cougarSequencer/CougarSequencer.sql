@@ -25,7 +25,8 @@ CREATE TABLE songs (
 INSERT INTO users (user_name, pass_word) VALUES
 ('CoolUser1',   'Secretpassword123'),
 ('AwesomePerson',   'Musicrules222'),
-('AnnoyedMuscian',    'Ilovethepiano2321');
+('AnnoyedMuscian',    'Ilovethepiano2321'),
+('AlanSaporta',    'Engineering');
 
 INSERT INTO songs (user_id, song_name, track) VALUES
 (1,

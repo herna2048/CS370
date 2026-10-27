@@ -3,33 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>CougarSequencer</title>
-  <link rel ="stylesheet" href="../cssFiles/style.css">
+  <link rel ="stylesheet" href="../cssFiles/register.css">
 </head>
 <body>
-  <h1>CougarSequencer</h1>
-
   <!-- The greeter button -->
-  <div class="card">
-  <button id="greeterBtn">Welcome!</button>
-  <div id="greeterOutput" class="result-box"></div>
-</div>
+  <div class="greeter">
+    <div id="title">CougarSequencer</div>
+    <button id="greeterBtn" class="greeterBtn" type="submit">Welcome!</button>
+    <div id="greeterOutput" class="greeterOutput"></div>
+  </div>
 
    <!-- The register button -->
-<div class="card">
+<div class="register">
   <h3>Please Create a New Username and Password</h3>
   <div class="form-row">
     <input type="text" id="username" placeholder="username" /><br> 
     <input type="text" id="password" placeholder="password" /><br>
-    <button id="registertBtn">Send</button>
+    <button id="registertBtn" class="registerBtn" type="submit">Send</button>
   </div>
-  <div id="registerOutput" class="result-box"></div>
-  <a href="login.html">  <!-- To go to the login.html file via hyperlink -->
+  <div id="registerOutput" class="registerOutput"></div>
+  <a href="login.html" id="href">  <!-- To go to the login.html file via hyperlink -->
     <h4>If you already have an account</h4>
   </a>
 </div>
 
   <!-- To involve the JS code for gathering the data that the user submits via button -->
-  <script src="../jsFiles/greeting.js"></script>  
+  <script src="../jsFiles/greeter.js"></script>  
   <script src="../jsFiles/register.js"></script>
 </body>
 </html>
