@@ -14,6 +14,14 @@
              box-sizing: border-box; /*helps prevent breaking the grid when we size it*/
         }
 
+        .sequencer-container{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+
         .grid-container{
             display: grid; /*CSS grid properties*/
             grid-template-columns: repeat(24,1fr);
@@ -36,4 +44,60 @@
 
         .cell.active{
             background-color: var(--active-note);
+        }
+
+        .tool-bar{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background-color: #01263d;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .toolbtn{
+            width:65px;
+            height: 65px;
+
+            padding: 0;
+            border: none;
+            border-radius: 16px;
+
+            background-color: #164E63;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+
+            display:inline-flex;
+            align-items: center;
+            justify-content:center;
+            box-sizing: border-box;
+        }
+
+        .toolbtn svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        .toolbtn:hover{
+            background-color: #0E7490;
+        }
+
+        .playButton,
+        .startButton {
+            font-size:25px;
+        }
+
+        .volumeSlider{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+        }
+
+        .volumeSlider input{
+            width: 120px;
+            cursor: pointer;
         }
