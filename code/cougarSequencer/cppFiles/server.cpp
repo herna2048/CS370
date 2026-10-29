@@ -82,6 +82,42 @@ CROW_ROUTE(app, "/api/login").methods(crow::HTTPMethod::POST)
     return response;
 });
 
+// the POST for when you request the data for the database for the specific song
+CROW_ROUTE(app, "/api/openProject").methods(crow::HTTPMethod::POST)
+([&conn](const crow::request& req) {
+    auto body = crow::json::load(req.body);
+    // check to see if there is a body and it contains what we had sent over in the js
+    if (!body || !body.has("/*temp parameter*/") || !body.has("/*temp parameter*/")) {
+        return crow::response(400, "{\"error\": \"Missing name field\"}");
+    }
+
+    crow::json::wvalue res;
+    // Call function defined in saveProject.cpp
+    res["openProject"] = openProject(/*temp parameter*/, conn);
+
+    crow::response response(res);
+    response.set_header("Content-Type", "application/json");
+    return response;
+});
+
+// the POST for when you request to submit data for the database for the specific song
+CROW_ROUTE(app, "/api/saveProject").methods(crow::HTTPMethod::POST)
+([&conn](const crow::request& req) {
+    auto body = crow::json::load(req.body);
+    // check to see if there is a body and it contains what we had sent over in the js
+    if (!body || !body.has("/*temp parameter*/") || !body.has("/*temp parameter*/")) {
+        return crow::response(400, "{\"error\": \"Missing name field\"}");
+    }
+
+    crow::json::wvalue res;
+    // Call function defined in saveProject.cpp
+    res["saveProject"] = saveProject(/*temp parameter*/, conn);
+
+    crow::response response(res);
+    response.set_header("Content-Type", "application/json");
+    return response;
+});
+
     app.port(18080).run();
 
 // if the connection isn't valid
