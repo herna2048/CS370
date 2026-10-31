@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"> <!--sets English as the primary languague-->
+<head>
+    <meta charset="UTF-8"> <!--uses this coding standard gor global text usuage-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--adjusts layout and layotu sizing-->
+    <title> CougarSequencer - Account Page</title>
+    <link rel="icon" type="image/png" href="../images/Sequencer.png">
+    <!--this section will be used for customization-->
+    <link rel="stylesheet" href="../cssFiles/accountPage.css">
+</head>
+<body>
+   
+    <div class="sequencer-container">
+       
+        <div class = "tool-bar">
+            
+            <!--This is for signing out-->
+            <button class = "toolbtn"
+                    id = "singOut"
+                    onclick = "location.href='login.html'"
+                    type = "button"
+                    aria-label = "Sign Out"
+                    title = "Sign Out">
+                    <!--This is for the icon-->
+                    <svg xmlns = "http://www.w3.org/2000/svg"
+                        width = "24"
+                        height = "24"
+                        viewBox = "0 0 24 24"
+                        fill = "none"
+                        stroke = "currentColor"
+                        stroke-width = "2"
+                        stroke-linecap = "round"
+                        stroke-linejoin= "round">
+                    
+                        <path d = "M9 21H5a2 2 0 0 1-2-2V5 a2 2 0 0 1 2-2h4"/>
+
+                        <polyline points = "16 17 21 12 16 7"/>
+
+                        <line x1 ="21" y1="12" x2="9" y2="12"/>
+                    </svg>    
+                </button>
+            <!--This is for create project-->
+            <button class = "toolbtn"
+                    id = "createBtn"
+                    onclick = "location.href='play.html'"
+                    type = "button"
+                    aria-label = "Create Button"
+                    title = "Create">
+                    ▶</button>
+            <!--This is for open project-->
+            <button class = "toolbtn"
+                    id = "openProject"
+                    type = "button"
+                    aria-label = "Open Project"
+                    title = "Export Project">
+                    <!--This is for the icon-->
+                    <svg xmlns = "http://www.w3.org/2000/svg"
+                        width = "24"
+                        height = "24"
+                        viewBox = "0 0 24 24"
+                        fill = "none"
+                        stroke = "currentColor"
+                        stroke-width = "2"
+                        stroke-linecap = "round"
+                        stroke-linejoin = "round">
+                        
+                        <path d = "M21 15v4a2 2 0 0 1-2 2H5 a2 2 0 0 1-2-2v-4"/>
+                        
+                        <polyline points = "7 10 12 15 17 10"/>
+
+                        <line x1="12" y1="15" x2 ="12" y2 = "3"/> 
+                    </svg>    
+            </button>
+    </div>
+    
+
+    <script src="../jsFiles/grid.js">
+    // Runs automatically when the window loads
+     window.onload = initializePage;
+    </script>
+    <script src="../jsFiles/openProject.js"></script>    
+</html>

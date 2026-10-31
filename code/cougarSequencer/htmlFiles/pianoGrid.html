@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"> <!--sets English as the primary languague-->
+<head>
+    <meta charset="UTF-8"> <!--uses this coding standard gor global text usuage-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--adjusts layout and layotu sizing-->
+    <title> CougarSequencer - Piano</title>
+    <!--this section will be used for customization-->
+    <link rel="stylesheet" href="../cssFiles/grid.css">
+</head>
+<body>
+    <!-- The title -->
+    <h1 class="title" id = "title">Piano</h1>
+
+    <!-- The grid -->
+    <div class="sequencer-container"></div>
+        <div class="grid-container" id="sequencerGrid"></div>
+        <div class="label-container" id="labelsColumn"></div>
+    </div>
+
+    <!-- The volume slider -->
+    <div class = "volumeSlider" 
+         id="volumeSlider"> 
+        <input
+            type="range"
+            id="volume"
+            min="0"
+            max="100"
+            value="70">
+        Volume
+    </div>
+
+    <!--This is for create project-->
+    <button class = "toolbtn"
+            id = "createBtn"
+            onclick = "location.href='play.html'"
+            type = "button"
+            aria-label = "Create Button"
+            title = "Create">
+            ▶</button>
+
+    <script src="../jsFiles/pianoGrid.js" defer>
+    // Runs automatically when the window loads
+     window.onload = initializePage;
+    </script>
+    <script src="../jsFiles/saveProject.js"></script>
+</html>

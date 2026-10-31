@@ -1,0 +1,54 @@
+:root {
+            --bg-color: #032B44;
+            --grid-line: #FFFFFF;
+            --active-note: #FFFFFF;
+        }
+
+        body {
+             background-color: var(--bg-color);
+             color: #FFFFFF; /*default text color(white)*/
+             display: flex; /*activates flexbot module which will eventually help with allignment*/
+             justify-content: center;
+             align-items: center;
+             min-height: 100vh; /* the minimum height is 100 percent of the window but it can grow if expanded*/
+             box-sizing: border-box; /*helps prevent breaking the grid when we size it*/
+        }
+
+        button{
+            width:65px;
+            height: 65px;
+
+            padding: 0;
+            border: none;
+            border-radius: 16px;
+
+            background-color: #164E63;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+
+            display:inline-flex;
+            align-items: center;
+            justify-content:center;
+            box-sizing: border-box;
+        }
+        
+        button:hover{
+            background-color: #0E7490;
+        }
+
+        .tool-bar{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background-color: #01263d;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .toolbtn svg {
+            width: 25px;
+            height: 25px;
+        }

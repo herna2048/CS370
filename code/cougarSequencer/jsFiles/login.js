@@ -14,7 +14,7 @@
       const data = await response.json();
     // if the user had inputs a valid username and password, they can move onto the grid.html, else they are sent the error message and try again
       if (data.login === "success")
-        window.location.href = "../htmlFiles/grid.html";
+        window.location.href = "../htmlFiles/accountPage.html";
       else
         document.getElementById('loginOutput').innerText = data.login;
     });

@@ -14,7 +14,7 @@
       const data = await response.json();
      // if the user had created a valid user, they can move onto the grid.html, else they are sent the error message and try again
       if (data.register === "success")
-        window.location.href = "../htmlFiles/grid.html";
+        window.location.href = "../htmlFiles/accountPage.html";
       else
         document.getElementById('registerOutput').innerText = data.register;
     });
