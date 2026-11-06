@@ -7,7 +7,7 @@
 body {
     background-color: var(--bg-color);
     color: #FFFFFF; /*default text color(white)*/
-    display: flex; /*activates flexbot module which will eventually help with allignment*/
+    display: flex; /*activates flexbox module which will eventually help with allignment*/
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* the minimum height is 100 percent of the window but it can grow if expanded*/
