@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang = "en"> <!--sets primary language to english-->
+<html> 
+
+<!--Head section of the HTML file-->
+    <head>
+        <meta charset="UTF-8"> <!--uses this coding standard gor global text usuage-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--adjusts layout and layotu sizing-->
+        <title> CougarSequencer - Song Manager</title>
+        <link rel="icon" type="image/png" href="../images/Sequencer.png">
+        <!--this section will be used for customization-->
+        <link rel="stylesheet" href="../cssFiles/accountPage.css">
+        <link rel="stylesheet" href="../cssFiles/songManager.css">
+    </head>
+
+<!-- Body section of the HTML file-->
+    <body>
+        <h1> Song Manager </h1>
+        <h4> Edit, Select, Delete or Create Songs here! </h4>
+        <hr>
+
+        <button class = "toolbtn"
+                    id = "accountPageBtn"
+                    onclick = "location.href='accountPage.html'"
+                    type = "button"
+                    aria-label = "Account Page Button"
+                    title = "Account Page">
+                    👤</button>
+
+        <!-- create song button -->
+        <button
+        id = "createSong"
+        style = "font-size: 20px;"
+        onclick = "location.href='createSong.html'"
+        aria-label = "Create Song Button"
+        title = "Create Song">> 
+        Create Song + 
+        </button>
+    
+        <!-- Song Boxes-->
+        <div class = "songBox" id = "song1">
+            <iframe src = "" width = "100%" height = "200"></iframe>
+            <h2> Song 1 </h2>
+            <hr>
+
+            <a href = "">
+                <button class = "editSong"> Edit </button>
+            </a>
+            
+            <button class = "selectSong"> Select </button>
+            <button class = "deleteSong"> Delete </button>
+            <button class = "optionsSong"> ... </button>
+        </div> 
+
+    </body>
+    
+</html>

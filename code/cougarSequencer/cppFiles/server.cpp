@@ -3,7 +3,7 @@
 #include <pqxx/pqxx> // client for PostGreSQL
 #include <exception> // for throwing exceptions
 #include <string>
-#include "../hFiles/crow_all.h"
+#include "../hFiles/crow_all.h" // API
 #include "../hFiles/greeter.h"
 #include "../hFiles/register.h"
 #include "../hFiles/login.h"
