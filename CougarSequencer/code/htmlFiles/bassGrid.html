@@ -9,15 +9,13 @@
     <link rel="stylesheet" href="../cssFiles/grid.css">
 </head>
 <body>
-    <!-- The title -->
-    <h1 class="title" id = "title">Bass</h1>
-
-    <!-- The grid -->
-    <div class="sequencer-container"></div>
-        <div class="grid-container" id="sequencerGrid"></div>
-        <div class="label-container" id="labelsColumn"></div>
+     <div class="sequencer-container">
+        <h1 class="sequencer-title">Bass</h1>
+        <div class="sequencer-layout">
+            <div class="labels-container" id="labelsColumn"></div>
+            <div class="grid-container" id="sequencerGrid"></div>
+        </div>
     </div>
-
     <!-- The volume slider -->
    <div class = "volumeSlider" id="volumeSlider"> 
         <input type="range" id="volume" min="0" max="100" value="70"> 
@@ -37,4 +35,6 @@
      window.onload = initializePage;
     </script>
     <script src="../jsFiles/saveProject.js"></script>
+</body>
 </html>
+
