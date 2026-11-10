@@ -1,3 +1,10 @@
+  const grid=document.getElementById('sequencerGrid');
+    const labelsColumn = document.getElementById('labelsColumn');
+    const totalCells=7*24;
+    const scaleNotes=['Bass Drum', 'Snare', 'Floor Toms', 'Tom-Tom', 'Ride', 'Hi-Hat', 'Crash'];
+    let generatedNotes=[];
+
+
 for(let i=0; i<7; i++){
    const noteIndex=i%12;
    const octaveOffset=Math.floor(i/12);
