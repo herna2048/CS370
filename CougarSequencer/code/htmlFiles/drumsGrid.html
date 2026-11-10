@@ -6,18 +6,16 @@
     <title> CougarSequencer - Drums</title>
     <link rel="icon" type="image/png" href="../images/Sequencer.png">
     <!--this section will be used for customization-->
-    <link rel="stylesheet" href="../cssFiles/grid.css">
+    <link rel="stylesheet" href="../cssFiles/DrumGrid.css">
 </head>
 <body>
-    <!-- The title -->
-    <h1 class="title" id = "title">Drums</h1>
-
-    <!-- The grid -->
-    <div class="sequencer-container"></div>
-        <div class="grid-container" id="sequencerGrid"></div>
-        <div class="label-container" id="labelsColumn"></div>
+     <div class="sequencer-container">
+        <h1 class="sequencer-title">Drums</h1>
+        <div class="sequencer-layout">
+            <div class="labels-container" id="labelsColumn"></div>
+            <div class="grid-container" id="sequencerGrid"></div>
+        </div>
     </div>
-
     <!-- The volume slider -->
    <div class = "volumeSlider" id="volumeSlider"> 
         <input type="range" id="volume" min="0" max="100" value="70"> 
@@ -33,9 +31,14 @@
             title = "Create">
             ▶</button>
 
-    <script src="../jsFiles/drumsGrid.js">
+    <script src="../jsFiles/DrumGrid.js">
     // Runs automatically when the window loads
      window.onload = initializePage;
+    </script>
+    <script src="../jsFiles/saveProject.js"></script>
+</body>
+</html>
+
     </script>
     <script src="../jsFiles/saveProject.js"></script>
 </html>
