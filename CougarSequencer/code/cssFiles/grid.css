@@ -18,10 +18,14 @@ body {
 .sequencer-container{
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 20px;
 }
 
+.sequencer-layout{ /*locks the layout*/
+    display:flex;
+    align-items: center;
+    height: min(85vw,85vh);
+}
 
 .grid-container{
     display: grid; /*CSS grid properties*/
@@ -39,6 +43,19 @@ body {
     cursor:pointer; /*switches the mouse to the hand because I like that better and its cute*/  
 }
 
+.tempoMeter {
+    width: 2px;
+    height: 815px; 
+    background-color: #5cee49;
+    position: absolute;
+
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    justify-self: start;
+    align-self: end;
+    z-index: 10;
+}
+
 .cell:hover{
     background-color:#82948f /*a grey color that appear when the cursor hovers over a box/note*/
 }
@@ -47,22 +64,10 @@ body {
     background-color: var(--active-note);
 }
 
-#volumeSlider{
+.volumeSlider{
     display: flex;
-    align-items: center;
     gap: 8px;
     color: white;
-}
-
-#volumeSlider input{
-    width: 120px;
-    cursor: pointer;
-}
-
-.sequencer-layout{ /*locks the layout*/
-    display:flex;
-    align-items: center;
-    height: min(85vw,85vh);
 }
 
 /*this is for the note containers*/
@@ -78,3 +83,15 @@ body {
     color:rgba(255,255,255,0.8);
 }
 
+#display{
+    font-size: 2rem;
+    font-family: monospace;
+    font-weight: bold;
+    color: hsl(0, 0%, 30%);
+    text-shadow: 2px 2px 2px hsl(0, 0%, 0%, 0.75);
+    margin-bottom: 25px;
+}
+
+.btn {
+
+}

@@ -1,10 +1,12 @@
-const pianoGrid=document.getElementById('sequencerGrid');
+const pianoGrid = document.getElementById('sequencerGrid');
     const labelsColumn = document.getElementById('labelsColumn');
-    const totalCells=24*24;
+    const row = 24;
+    const col = 24;
+    const totalCells=row*col;
     const scaleNotes=['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
     let generatedNotes=[];
 
-    for(let i=0; i<24; i++){
+    for(let i=0; i<row; i++){
         const noteIndex=i%12;
         const octaveOffset=Math.floor(i/12);
         const currentOctave= 4+ octaveOffset;
@@ -19,13 +21,18 @@ const pianoGrid=document.getElementById('sequencerGrid');
         labelsColumn.appendChild(labelNode);
     });
 
-    for(let i=0; i < totalCells; i++) {
-        const cell= document.createElement('div');
-        cell.classList.add("cell");
+    for(let r = 0; r < row; r++) {
+        for(let c = 0; c < col; c++) {
+            const cell= document.createElement('div');
+            cell.classList.add("cell");
 
-        cell.addEventListener('click', () => {
-            cell.classList.toggle('active');
-        });
+            cell.addEventListener('click', () => {
+                cell.classList.toggle('active');
+            });
 
-        pianoGrid.appendChild(cell);
+            pianoGrid.appendChild(cell);
+
+            cell.style.gridRow = `${r+1}`;
+            cell.style.gridColumn = `${c+1}`;
+        }
     }
