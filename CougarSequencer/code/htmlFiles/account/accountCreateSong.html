@@ -4,26 +4,19 @@
     <meta charset="UTF-8"> <!--uses this coding standard gor global text usuage-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--adjusts layout and layotu sizing-->
     <title> CougarSequencer - Play</title>
-    <link rel="icon" type="image/png" href="../images/Sequencer.png">
+    <link rel="icon" type="image/png" href="../../images/Sequencer.png">
     <!--this section will be used for customization-->
     <link rel="stylesheet" href="../../cssFiles/account/accountPage.css">
 </head>
 
 <body>
     <button class = "toolbtn"
-                    id = "selectSong"
-                    style = "font-size: 20px;"
-                    onclick = "location.href='songEditor.html'"
-                    aria-label = "Select Song Button"
-                    title = "Select Song"> 
-                    Back</button>
-    <button class = "toolbtn"
                     id = "songManagerBtn"
                     onclick = "location.href='songManager.html'"
                     type = "button"
                     aria-label = "Song Manager Button"
                     title = "Song Manager">
-                    🎵</button>
+                    Back</button>
     
     <button class = "toolbtn"
                     id = "pianoBtn"
@@ -46,4 +39,28 @@
                     aria-label = "Drums Button"
                     title = "Drums">
                     🥁</button>
+    <!--This is for open project-->
+    <button class = "toolbtn"
+                    id = "exportProject"
+                    type = "button"
+                    aria-label = "Export Project"
+                    title = "Export Project">
+                    <!--This is for the icon-->
+                    <svg xmlns = "http://www.w3.org/2000/svg"
+                        width = "24"
+                        height = "24"
+                        viewBox = "0 0 24 24"
+                        fill = "none"
+                        stroke = "currentColor"
+                        stroke-width = "2"
+                        stroke-linecap = "round"
+                        stroke-linejoin = "round">
+                        
+                        <path d = "M21 15v4a2 2 0 0 1-2 2H5 a2 2 0 0 1-2-2v-4"/>
+                        
+                        <polyline points = "7 10 12 15 17 10"/>
+
+                        <line x1="12" y1="15" x2 ="12" y2 = "3"/> 
+                    </svg>    
+        </button>
 </body>

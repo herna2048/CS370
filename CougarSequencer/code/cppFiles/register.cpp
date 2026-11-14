@@ -1,7 +1,7 @@
 #include <pqxx/pqxx>
 #include <iostream>
 #include <string>
-#include "../../hFiles/account/register.h"
+#include "../hFiles/account/register.h"
 
 // create a function that sends a string for whether it was successful in creating a user or not
 std::string registerUser(const std::string& username, const std::string& password, pqxx::connection& conn) {
