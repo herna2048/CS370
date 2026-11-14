@@ -4,9 +4,9 @@
     <meta charset="UTF-8"> <!--uses this coding standard gor global text usuage-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--adjusts layout and layotu sizing-->
     <title> CougarSequencer - Piano</title>
-    <link rel="icon" type="image/png" href="../images/Sequencer.png">
+    <link rel="icon" type="image/png" href="../../images/Sequencer.png">
     <!--this section will be used for customization-->
-    <link rel="stylesheet" href="../cssFiles/grid.css">
+    <link rel="stylesheet" href="../../cssFiles/grid.css">
 </head>
 <body>
      <div class="sequencer-container">
@@ -20,8 +20,9 @@
                 00:00
             </div>
         </div>
-        
     </div>
+
+    
     <!-- The volume slider -->
     <div class = "volumeSlider"> 
         <input type="range" id="volume" min="0" max="100" value="70"> 
@@ -31,11 +32,11 @@
     <!--This is for create project-->
     <button class = "btn"
             id = "createBtn"
-            onclick = "location.href='songManager.html'"
+            onclick = "history.back()"
             type = "button"
             aria-label = "Create Button"
             title = "Create">
-            ➕</button>
+            Back</button>
 
     <!--This is to play-->
     <button class = "btn"
@@ -57,18 +58,21 @@
     <!--This is the Bpm text box and button-->
     <div class="bpm">
         <div class="form-row">
-            <input type="text" id="bpmNum" placeholder="bpm = 0" /><br>
+            <input type="text" id="bpmNum" placeholder="bpm = 60" /><br>
             <button id="bpmBtn" class="bpmBtn" type="submit">Send</button>
         </div>
     </div>
 
-    <script 
-    src="../jsFiles/pianoGrid.js" defer>
-    window.onload = initializePage; // Runs automatically when the window loads
+    <script>
+        const row = 24;
+        const col = 24;
+        const scaleNotes=['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    </script>
+    <script src="../../jsFiles/grid.js" defer>
+        window.onload = initializePage;
     </script>
     <!-- <script src="../jsFiles/saveProject.js"></script>
     <script src="../jsFiles/openProject.js"></script> -->
-    <script src="../jsFiles/stopWatch.js" defer></script>
-    <script src="../jsFiles/swapButtons.js" defer></script>
+    <script src="../../jsFiles/stopWatch.js"></script>
 </body>
 </html>

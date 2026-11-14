@@ -13,7 +13,7 @@ const grid = document.getElementById('sequencerGrid');
 
 }
 
-   document.getElementById('playBtn').addEventListener('click', async () => {
+document.getElementById('playBtn').addEventListener('click', async () => {
     const totalCells=24*24;
 
     for(let i = 0; i < totalCells; i++) {
@@ -27,4 +27,5 @@ const grid = document.getElementById('sequencerGrid');
         grid.appendChild(cell);
     
 
-}
+    }
+});

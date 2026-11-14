@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CougarSequencer - Login</title>
+  <link rel="icon" type="image/png" href="../images/Sequencer.png">
+  <link rel ="stylesheet" href="../cssFiles/account/accountPage.css">
+</head>
+<body>
+   <!-- The greeter button -->
+  <div class="greeter">
+    <div id="title">CougarSequencer</div>
+    <button id="greeterBtn" class="greeterBtn" type="submit">Welcome!</button>
+    <div id="greeterOutput" class="greeterOutput"></div>
+  </div>
+
+    <!-- The guest button -->
+  <button class = "toolbtn"
+                    id = "guestBtn"
+                    onclick = "location.href='guest/guestPage.html'"
+                    type = "button"
+                    aria-label = "Guest Button"
+                    title = "Guest">
+                    Guest</button>
+
+   <!-- The login button -->
+  <button class = "toolbtn"
+                    id = "loginBtn"
+                    onclick = "location.href='account/login.html'"
+                    type = "button"
+                    aria-label = "Login Button"
+                    title = "Login">
+                    Login</button>
+
+  <!-- To involve the JS code for gathering the data that the user submits via button -->
+  <script src="../jsFiles/greeter.js"></script>
+</body>
+</html>

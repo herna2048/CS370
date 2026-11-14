@@ -4,15 +4,9 @@
   <meta charset="UTF-8">
   <title>CougarSequencer - Login</title>
   <link rel="icon" type="image/png" href="../images/Sequencer.png">
-  <link rel ="stylesheet" href="../cssFiles/login.css">
+  <link rel ="stylesheet" href="../../cssFiles/account/login.css">
 </head>
 <body>
-   <!-- The greeter button -->
-  <div class="greeter">
-    <div id="title">CougarSequencer</div>
-    <button id="greeterBtn" class="greeterBtn" type="submit">Welcome!</button>
-    <div id="greeterOutput" class="greeterOutput"></div>
-  </div>
 
   <!-- The login button -->
 <div class="login">
@@ -28,8 +22,16 @@
   </a>
 </div>
 
+<!--This is for create project-->
+    <button class = "btn"
+            id = "welcomePageBtn"
+            onclick = "location.href='../homePage.html'"
+            type = "button"
+            aria-label = "Welcome Page Button"
+            title = "Welcome Page">
+            Back</button>
+
   <!-- To involve the JS code for gathering the data that the user submits via button -->
-  <script src="../jsFiles/greeter.js"></script>
-  <script src="../jsFiles/login.js"></script>
+  <script src="../../jsFiles/account/login.js"></script>
 </body>
 </html>

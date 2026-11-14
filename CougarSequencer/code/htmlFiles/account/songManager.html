@@ -9,8 +9,8 @@
         <title> CougarSequencer - Song Manager</title>
         <link rel="icon" type="image/png" href="../images/Sequencer.png">
         <!--this section will be used for customization-->
-        <link rel="stylesheet" href="../cssFiles/accountPage.css">
-        <link rel="stylesheet" href="../cssFiles/songManager.css">
+        <link rel="stylesheet" href="../../cssFiles/account/accountPage.css">
+        <link rel="stylesheet" href="../../cssFiles/account/songManager.css">
     </head>
 
 <!-- Body section of the HTML file-->
@@ -25,15 +25,15 @@
                     type = "button"
                     aria-label = "Account Page Button"
                     title = "Account Page">
-                    👤</button>
+                    Back</button>
 
         <!-- create song button -->
         <button
         id = "createSong"
         style = "font-size: 20px;"
-        onclick = "location.href='createSong.html'"
+        onclick = "location.href=''"
         aria-label = "Create Song Button"
-        title = "Create Song">> 
+        title = "Create Song">
         Create Song + 
         </button>
     
@@ -43,13 +43,19 @@
             <h2> Song 1 </h2>
             <hr>
 
-            <a href = "">
-                <button class = "editSong"> Edit </button>
-            </a>
-            
-            <button class = "selectSong"> Select </button>
+            <button
+                id = "selectSong"
+                style = "font-size: 20px;"
+                onclick = "location.href='songEditor.html'"
+                aria-label = "Select Song Button"
+                title = "Select Song"> 
+                Select 
+            </button>
+
             <button class = "deleteSong"> Delete </button>
+
             <button class = "optionsSong"> ... </button>
+            
         </div> 
 
     </body>

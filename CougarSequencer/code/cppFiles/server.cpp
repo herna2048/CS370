@@ -5,8 +5,8 @@
 #include <string>
 #include "../hFiles/crow_all.h" // API
 #include "../hFiles/greeter.h"
-#include "../hFiles/register.h"
-#include "../hFiles/login.h"
+#include "../hFiles/account/register.h"
+#include "../hFiles/account/login.h"
 
 using namespace std;
 

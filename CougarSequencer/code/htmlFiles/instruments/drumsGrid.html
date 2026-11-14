@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"> <!--sets English as the primary languague-->
+<head>
+    <meta charset="UTF-8"> <!--uses this coding standard gor global text usuage-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--adjusts layout and layotu sizing-->
+    <title> CougarSequencer - Drums</title>
+    <link rel="icon" type="image/png" href="../../images/Sequencer.png">
+    <!--this section will be used for customization-->
+    <link rel="stylesheet" href="../../cssFiles/grid.css">
+</head>
+<body>
+     <div class="sequencer-container">
+        <h1 class="sequencer-title">Drums</h1>
+        <div class="sequencer-layout">
+            <div class="labels-container" id="labelsColumn"></div>
+            <div class="grid-container" id="sequencerGrid">
+                <div class = "tempoMeter" id="tempoMeter"></div>
+            </div>
+            <div id="display">
+                00:00
+            </div>
+        </div>
+        
+    </div>
+    <!-- The volume slider -->
+   <div class = "volumeSlider" id="volumeSlider"> 
+        <input type="range" id="volume" min="0" max="100" value="70"> 
+        <label for="volume">Volume</label>
+    </div>
+
+    <!--This is for create project-->
+    <button class = "toolbtn"
+            id = "createBtn"
+            onclick = "history.back()"
+            type = "button"
+            aria-label = "Create Button"
+            title = "Create">
+            Back</button>
+
+    <!--This is to play-->
+    <button class = "btn"
+            id = "playBtn"
+            type = "button"
+            aria-label = "Play Button"
+            title = "Play">
+            ▶</button>
+
+    <!--This is to pause-->
+    <button class = "btn"
+            id = "pauseBtn"
+            type = "button"
+            aria-label = "Pause Button"
+            title = "Pause"
+            style="display: none;">
+            ⏸</button>
+
+    <!--This is the Bpm text box and button-->
+    <div class="bpm">
+        <div class="form-row">
+            <input type="text" id="bpmNum" placeholder="bpm = 60" /><br>
+            <button id="bpmBtn" class="bpmBtn" type="submit">Send</button>
+        </div>
+    </div>
+
+    <script>
+        let row = 7;
+        let col = 24;
+        const scaleNotes=['Bass Drum', 'Snare', 'Floor Toms', 'Tom-Tom', 'Ride', 'Hi-Hat', 'Crash'];
+    </script>
+    <script src="../../jsFiles/grid.js">
+    // Runs automatically when the window loads
+     window.onload = initializePage;
+    </script>
+    <!-- <script src="../jsFiles/saveProject.js"></script> -->
+    <!-- <script src="../jsFiles/openProject.js"></script> -->
+    <script src="../../jsFiles/stopWatch.js" defer></script>
+</body>
+</html>
