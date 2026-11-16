@@ -10,13 +10,16 @@
       const response = await fetch('http://localhost:18080/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: username, password: password }), id: id
+        body: JSON.stringify({ username: username, password: password, id: id})
       });
      
       const data = await response.json();
      // if the user had created a valid user, they can move onto the grid.html, else they are sent the error message and try again
-      if (data.register === "success")
+      if (data.register === "success"){
+        const params = { id: id, username: username };
+        sessionStorage.setItem("params", JSON.stringify(params));
         window.location.replace("../../htmlFiles/account/songManager.html");
+      }
       else
         document.getElementById('registerOutput').innerText = data.register;
     });

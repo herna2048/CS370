@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include "../hFiles/account/register.h"
-#include "../hFiles/account/userId.h"
+// #include "../hFiles/account/userId.h"
 
 using namespace std;
 
@@ -20,13 +20,16 @@ string registerUser(const string& username, const string& password, int& id, pqx
         username, password
         );
 
+        // If it worked - they chose a username that no one else had
+        auto result = txn.exec_params( // txn.exec for mac txn.exec_params for WSL
+        "SELECT id FROM users WHERE user_name = $1",
+        username
+        );
+
+        id = stoi(result[0][0].c_str());
+
         // commit the insert
         txn.commit();
-
-        cout << username << endl;
-
-        // If it worked - they chose a username that no one else had
-        // id = userId(username, conn);
 
         return "success";
     } 

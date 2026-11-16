@@ -11,8 +11,6 @@ int userId(const string& username, pqxx::connection& conn) {
     // to open a connection between the database and server
     pqxx::work txn(conn);
 
-    cerr << username << endl;
-
     // how to do SQL in C++, sending these parameters of what SQL code you want to run and the parameters that you want to insert
     auto result = txn.exec_params( // txn.exec for mac txn.exec_params for WSL
     "SELECT id FROM users WHERE user_name = $1",

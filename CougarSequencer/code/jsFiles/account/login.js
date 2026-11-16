@@ -3,18 +3,22 @@
     // make the html values into valid js values
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
+      const id = 0;
 
     // connect with the C++ specific function for the POST request and push in the specific parameters
       const response = await fetch('http://localhost:18080/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: username, password: password })
+        body: JSON.stringify({ username: username, password: password, id: id })
       });
 
       const data = await response.json();
     // if the user had inputs a valid username and password, they can move onto the grid.html, else they are sent the error message and try again
-      if (data.login === "success")
+      if (data.login === "success"){
+        const params = { id: id, username: username };
+        sessionStorage.setItem("params", JSON.stringify(params));
         window.location.replace("../../htmlFiles/account/songManager.html");
+      }
       else
         document.getElementById('loginOutput').innerText = data.login;
     });

@@ -87,13 +87,31 @@ CROW_ROUTE(app, "/api/login").methods(crow::HTTPMethod::POST)
         return crow::response(400, "{\"error\": \"Missing name field\"}");
     }
 
+    u.username = body["username"].s();
+    u.password = body["password"].s();
+    u.id = body["id"].i();
+
     crow::json::wvalue res;
     // Call function defined in login.cpp
-    res["login"] = loginUser(body["username"].s(), body["password"].s(), conn);
+    res["login"] = loginUser(u.username, u.password, u.id, conn);
 
     crow::response response(res);
     response.set_header("Content-Type", "application/json");
     return response;
+});
+
+// the POST for when you request to submit data for the database to select the username to see if it has a corresponding password
+CROW_ROUTE(app, "/api/logOut").methods(crow::HTTPMethod::PUT)
+([&conn, &u](const crow::request& req) {
+    auto body = crow::json::load(req.body);
+
+    u.username = body["username"].s();
+    u.password = body["password"].s();
+    u.id = body["id"].i();
+
+    crow::json::wvalue res;
+    res["status"] = "updated";
+    return crow::response(200, res);;
 });
 
 // // the POST for when you request the data for the database for the specific song

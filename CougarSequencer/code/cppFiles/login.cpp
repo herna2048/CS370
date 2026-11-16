@@ -2,10 +2,11 @@
 #include <iostream>
 #include <string>
 #include "..//hFiles/account/login.h"
+// #include "../hFiles/account/userId.h"
 
 using namespace std;
 
-string loginUser(const string& username, const string& password, pqxx::connection& conn) {
+string loginUser(const string& username, const string& password, int& id, pqxx::connection& conn) {
     try {
         cout << "[DEBUG] Starting select for user: " << username << endl;
 
@@ -23,9 +24,16 @@ string loginUser(const string& username, const string& password, pqxx::connectio
             return "This username is not valid. Please try again.";
 
         // check to see if the password corresponds with the username they selected
-        if (password == result[0][0].c_str())
-            return "success"; // If it worked - they choose a username that no one else had
+        if (password == result[0][0].c_str()){
+            result = txn.exec_params( // txn.exec for mac txn.exec_params for WSL
+            "SELECT id FROM users WHERE user_name = $1",
+            username
+            );
 
+            id = stoi(result[0][0].c_str());
+
+            return "success"; // If it worked - they choose a username that no one else had
+        }
         
         return "This password is not valid. Please try again.";
     } 
