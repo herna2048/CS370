@@ -3,33 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>CougarSequencer - Login</title>
-  <link rel="icon" type="image/png" href="../images/Sequencer.png">
-  <link rel ="stylesheet" href="../../cssFiles/account/login.css">
+  <link rel="icon" type="image/png" href="../../images/Sequencer.png">
+  <link rel ="stylesheet" href="../../cssFiles/style.css">
 </head>
 <body>
 
-  <!-- The login button -->
-<div class="login">
-  <h3>Please put in your username and password</h3>
-  <div class="form-row">
-    <input type="text" id="username" placeholder="username" /><br>
-    <input type="text" id="password" placeholder="password" /><br>
-    <button id="loginBtn" class="loginBtn" type="submit">Send</button>
+<!-- The login button -->
+  <div class="login">
+    <h3>Please put in your username and password</h3>
+    <div class="form-row">
+      <input type="text" class="input" id="username" placeholder="username" /><br>
+      <input type="text" class="input" id="password" placeholder="password" /><br>
+      <button id="loginBtn" class="sendBtn" type="submit">Login</button>
+    </div>
+    <div id="loginOutput" class="loginOutput"></div>
+    <a href="register.html" id="href"> <!-- To go to the register.html file via hyperlink -->
+      <h4>If you don't have an account</h4>
+    </a>
   </div>
-  <div id="loginOutput" class="loginOutput"></div>
-  <a href="register.html" id="href"> <!-- To go to the register.html file via hyperlink -->
-    <h4>If you don't have an account</h4>
-  </a>
-</div>
 
-<!--This is for create project-->
-    <button class = "btn"
-            id = "welcomePageBtn"
-            onclick = "location.href='../homePage.html'"
-            type = "button"
-            aria-label = "Welcome Page Button"
-            title = "Welcome Page">
-            Back</button>
+  <!--This is to go back-->
+  <button id = "backBtn"
+          class="sendBtn"
+          onclick = "window.location.replace('../homePage.html')"
+          type = "button"
+          aria-label = "Welcome Page Button"
+          title = "Welcome Page">
+          Back</button>
 
   <!-- To involve the JS code for gathering the data that the user submits via button -->
   <script src="../../jsFiles/account/login.js"></script>

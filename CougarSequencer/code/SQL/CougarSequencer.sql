@@ -1,7 +1,7 @@
 -- CougarSequencer ERD
 
---DROP TABLE IF EXISTS songs CASCADE;
---DROP TABLE IF EXISTS users CASCADE;
+-- DROP TABLE IF EXISTS songs CASCADE;
+-- DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE IF NOT EXISTS users (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -23,10 +23,8 @@ CREATE TABLE IF NOT EXISTS songs (
 
 -- Users data
 INSERT INTO users (user_name, pass_word) VALUES
-('CoolUser1',   'Secretpassword123'),
-('AwesomePerson',   'Musicrules222'),
-('AnnoyedMuscian',    'Ilovethepiano2321'),
-('AlanSaporta',    'Engineering');
+('guestUser',   'NoPassWord'),
+('CoolUser1',   'Secretpassword123');
 
 INSERT INTO songs (user_id, song_name, track) VALUES
 (1,

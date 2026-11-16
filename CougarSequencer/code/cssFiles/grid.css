@@ -1,20 +1,3 @@
-:root {
-    --bg-color: #032B44;
-    --grid-line: #FFFFFF;
-    --active-note: #FFFFFF;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: #FFFFFF; /*default text color(white)*/
-    display: flex; /*activates flexbox module which will eventually help with allignment*/
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* the minimum height is 100 percent of the window but it can grow if expanded*/
-    margin:0;
-    box-sizing: border-box; /*helps prevent breaking the grid when we size it*/
-}
-
 .sequencer-container{
     display: flex;
     flex-direction: column;

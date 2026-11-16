@@ -10,6 +10,14 @@
 
 using namespace std;
 
+// The users information
+class user {
+    public:
+        int id = 0;
+        string username = "guestUser";  
+        string password = "NoPassWord";
+};
+
 // All of the rules for the crow for POST, GET, etc...
 struct CORSRules {
     struct context {};
@@ -30,6 +38,8 @@ pqxx::connection conn("host=localhost port=5432 dbname=CougarSequencer user=post
 // creating the app for the crow in order to connect to the server
 crow::App<CORSRules> app;
 
+user u;
+
 // initializing the response code to be 204 for no content
 CROW_ROUTE(app, "/<path>").methods(crow::HTTPMethod::OPTIONS)
 ([](crow::response& res, std::string) {
@@ -48,16 +58,20 @@ CROW_ROUTE(app, "/api/greeter").methods(crow::HTTPMethod::GET)
         
 // the POST for when you request to submit data for the database to insert in username and password
 CROW_ROUTE(app, "/api/register").methods(crow::HTTPMethod::POST)
-([&conn](const crow::request& req) {
+([&conn, &u](const crow::request& req) {
     auto body = crow::json::load(req.body);
     // check to see if there is a body and it contains what we had sent over in the js
     if (!body || !body.has("username") || !body.has("password")) {
         return crow::response(400, "{\"error\": \"Missing name field\"}");
     }
 
+    u.username = body["username"].s();
+    u.password = body["password"].s();
+    u.id = body["id"].i();
+
     crow::json::wvalue res;
     // Call function defined in register.cpp
-    res["register"] = registerUser(body["username"].s(), body["password"].s(), conn);
+    res["register"] = registerUser(u.username, u.password, u.id, conn);
 
     crow::response response(res);
     response.set_header("Content-Type", "application/json");
@@ -66,7 +80,7 @@ CROW_ROUTE(app, "/api/register").methods(crow::HTTPMethod::POST)
 
 // the POST for when you request to submit data for the database to select the username to see if it has a corresponding password
 CROW_ROUTE(app, "/api/login").methods(crow::HTTPMethod::POST)
-([&conn](const crow::request& req) {
+([&conn, &u](const crow::request& req) {
     auto body = crow::json::load(req.body);
     // check to see if there is a body and it contains what we had sent over in the js
     if (!body || !body.has("username") || !body.has("password")) {

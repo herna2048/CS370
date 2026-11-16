@@ -1,3 +1,4 @@
+/* General CSS for all html */
 :root {
             --bg-color: #032B44;
             --grid-line: #FFFFFF;
@@ -24,7 +25,7 @@
 
             background-color: #164E63;
             color: white;
-            font-size: 25px;
+            font-size: 15px;
             cursor: pointer;
 
             display:inline-flex;
@@ -32,18 +33,36 @@
             justify-content:center;
             box-sizing: border-box;
         }
+
+        /* For send buttons */
+        .sendBtn{
+            width:55px;
+            height: 35px;
+        }
+
+        /* For image buttons */
+        .imageBtn{
+             font-size: 25px;
+        }
+
+        /* For back buttons */
+        #backBtn{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
         
         button:hover{
             background-color: #0E7490;
         }
 
+        /* For groups of buttons */
         .tool-bar{
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 12px;
             padding: 12px 20px;
-            background-color: #01263d;
             border-radius: 10px;
             margin-bottom: 20px;
         }
@@ -51,4 +70,31 @@
         .toolbtn svg {
             width: 25px;
             height: 25px;
+        }
+
+        #href{
+            color:aliceblue;
+        }
+
+        /* For text boxes */
+        .input{
+            margin-bottom:16px;
+        }
+
+        /* For Home Page */
+        .greeter{
+            position: fixed;
+            top: 5%;
+        }
+
+        /* For Song Manager */
+        .songBox{
+            color: hsl(0, 0%, 100%);
+            width: 400px;
+            border: 3px solid hsl(0, 0%, 100%);
+            margin-right: 15px;
+            margin-bottom: 15px;
+            padding: 5px;
+            display: inline-block;
+            align-self: center;
         }

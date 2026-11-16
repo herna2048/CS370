@@ -3,9 +3,11 @@
 #include <string>
 #include "..//hFiles/account/login.h"
 
-std::string loginUser(const std::string& username, const std::string& password, pqxx::connection& conn) {
+using namespace std;
+
+string loginUser(const string& username, const string& password, pqxx::connection& conn) {
     try {
-        std::cout << "[DEBUG] Starting insert for user: " << username << std::endl;
+        cout << "[DEBUG] Starting select for user: " << username << endl;
 
         // to open a connection between the database and server
         pqxx::work txn(conn);
@@ -27,8 +29,8 @@ std::string loginUser(const std::string& username, const std::string& password, 
         
         return "This password is not valid. Please try again.";
     } 
- catch(const std::exception& e) { // if something went wrong with what was inserted by the user or other external factor
-        std::cerr << "[DB ERROR] Query failed: " << e.what() << std::endl;
+ catch(const exception& e) { // if something went wrong with what was inserted by the user or other external factor
+        cerr << "[DB ERROR] Query failed: " << e.what() << endl;
         return "There was something wrong with your username or password. Please try again.";
     }
 }

@@ -6,61 +6,44 @@
     <title> CougarSequencer - Play</title>
     <link rel="icon" type="image/png" href="../../images/Sequencer.png">
     <!--this section will be used for customization-->
-    <link rel="stylesheet" href="../../cssFiles/account/accountPage.css">
+    <link rel="stylesheet" href="../../cssFiles/style.css">
 </head>
 
 <body>
-    <button class = "toolbtn"
-                    id = "songManagerBtn"
-                    onclick = "location.href='songManager.html'"
-                    type = "button"
-                    aria-label = "Song Manager Button"
-                    title = "Song Manager">
-                    Back</button>
-    
-    <button class = "toolbtn"
-                    id = "pianoBtn"
-                    onclick = "location.href='pianoGrid.html'"
-                    type = "button"
-                    aria-label = "Piano Button"
-                    title = "Piano">
-                    🎹</button>
-    <button class = "toolbtn"
-                    id = "bassBtn"
-                    onclick = "location.href='bassGrid.html'"
-                    type = "button"
-                    aria-label = "Bass Button"
-                    title = "Bass">
-                    🎸</button>
-    <button class = "toolbtn"
-                    id = "drumsBtn"
-                    onclick = "location.href='drumsGrid.html'"
-                    type = "button"
-                    aria-label = "Drums Button"
-                    title = "Drums">
-                    🥁</button>
-    <!--This is for open project-->
-    <button class = "toolbtn"
-                    id = "exportProject"
-                    type = "button"
-                    aria-label = "Export Project"
-                    title = "Export Project">
-                    <!--This is for the icon-->
-                    <svg xmlns = "http://www.w3.org/2000/svg"
-                        width = "24"
-                        height = "24"
-                        viewBox = "0 0 24 24"
-                        fill = "none"
-                        stroke = "currentColor"
-                        stroke-width = "2"
-                        stroke-linecap = "round"
-                        stroke-linejoin = "round">
-                        
-                        <path d = "M21 15v4a2 2 0 0 1-2 2H5 a2 2 0 0 1-2-2v-4"/>
-                        
-                        <polyline points = "7 10 12 15 17 10"/>
 
-                        <line x1="12" y1="15" x2 ="12" y2 = "3"/> 
-                    </svg>    
-        </button>
+     <button 
+            id = "backBtn"
+            class="sendBtn"
+            onclick = "location.href='songManager.html'"
+            type = "button"
+            aria-label = "Song Manager Button"
+            title = "Song Manager">
+            Back</button>
+
+    <div class = "tool-bar">
+        <button 
+                id = "pianoBtn"
+                class="imageBtn"
+                onclick = "location.href='../instruments/pianoGrid.html'"
+                type = "button"
+                aria-label = "Piano Button"
+                title = "Piano">
+                🎹</button>
+        <button 
+                id = "bassBtn"
+                class="imageBtn"
+                onclick = "location.href='../instruments/bassGrid.html'"
+                type = "button"
+                aria-label = "Bass Button"
+                title = "Bass">
+                🎸</button>
+        <button 
+                id = "drumsBtn"
+                class="imageBtn"
+                onclick = "location.href='../instruments/drumsGrid.html'"
+                type = "button"
+                aria-label = "Drums Button"
+                title = "Drums">
+                🥁</button>
+    </div>
 </body>

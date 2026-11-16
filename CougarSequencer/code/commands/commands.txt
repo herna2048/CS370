@@ -8,7 +8,8 @@ Install PostgreSQL server and client
 sudo apt install -y postgresql postgresql-contrib
 
 Compile the project with C++17, linking pqxx, pq, boost_system, and pthread
-g++ -std=c++17 server.cpp greeter.cpp register.cpp login.cpp openProject.cpp saveProject.cpp -lpqxx -lpq -lboost_system -lpthread -o server
+g++ -std=c++17 server.cpp greeter.cpp register.cpp login.cpp userId.cpp -lpqxx -lpq -lpthread -o server
+g++ -std=c++17 server.cpp greeter.cpp register.cpp login.cpp userId.cpp openProject.cpp saveProject.cpp -lpqxx -lpq -lboost_system -lpthread -o server
 
 On your powershell/terminal make sure your wsl has same IP has host
 notepad $env:USERPROFILE\.wslconfig

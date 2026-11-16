@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="../../images/Sequencer.png">
     <!--this section will be used for customization-->
     <link rel="stylesheet" href="../../cssFiles/grid.css">
+    <link rel="stylesheet" href="../../cssFiles/style.css">
 </head>
 <body>
      <div class="sequencer-container">
@@ -28,13 +29,13 @@
         <label for="volume">Volume</label>
     </div>
 
-    <!--This is for create project-->
-    <button class = "toolbtn"
-            id = "createBtn"
+    <!--This is to go back-->
+    <button class = "sendBtn"
+            id = "backBtn"
             onclick = "history.back()"
             type = "button"
-            aria-label = "Create Button"
-            title = "Create">
+            aria-label = "Back Button"
+            title = "Back">
             Back</button>
 
     <!--This is to play-->
@@ -57,8 +58,8 @@
     <!--This is the Bpm text box and button-->
     <div class="bpm">
         <div class="form-row">
-            <input type="text" id="bpmNum" placeholder="bpm = 60" /><br>
-            <button id="bpmBtn" class="bpmBtn" type="submit">Send</button>
+            <input type="text" class="input" id="bpmNum" placeholder="bpm = 60" /><br>
+            <button id="bpmBtn" type="submit">Send</button>
         </div>
     </div>
 
