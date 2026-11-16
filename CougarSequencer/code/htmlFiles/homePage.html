@@ -2,39 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CougarSequencer - Login</title>
+  <title>CougarSequencer - Welcome</title>
   <link rel="icon" type="image/png" href="../images/Sequencer.png">
   <link rel ="stylesheet" href="../cssFiles/style.css">
 </head>
-<body>
-   <!-- The greeter button -->
-  <div class="greeter">
-    <div id="title">CougarSequencer</div>
-    <button id="greeterBtn" class="greeterBtn" type="submit">Welcome!</button>
-    <div id="greeterOutput" class="greeterOutput"></div>
-  </div>
+<body class = "welcome-page">
+  <!--Navigation Bar-->
+    <nav class="welcome-navbar">
+      <div class = "logo">CougarSequencer</div>
 
-    <!-- The guest button -->
-  <button 
-          class = "sendBtn"
-          id = "guestBtn"
-          onclick = "window.location.replace('guest/guestCreateSong.html')"
-          type = "button"
-          aria-label = "Guest Button"
-          title = "Guest">
-          Guest</button>
+      <div class="nav-links">
+        <a href="account/login.html">Sign In</a>
+      </div>
+    </nav>
 
-   <!-- The login button -->
-  <button 
-          id = "loginBtn"
-          class="sendBtn"
-          onclick = "window.location.replace('account/login.html')"
-          type = "button"
-          aria-label = "Login Button"
-          title = "Login">
-          Login</button>
+    <!--Main Welcome Section-->
+    <main class="welcome-content">
+      <h1>Where Story Meets Song.</h1>
 
-  <!-- To involve the JS code for gathering the data that the user submits via button -->
-  <script src="../jsFiles/greeter.js"></script>
+      <p>
+        Every song has a story, let's start writing yours.
+      </p>
+
+      <!--Account Options -->
+      <div class ="welcome-buttons">
+
+        <button
+          class="create-account-btn"
+          onclick="window.location.href='account/register.html'"
+          type="button">
+          Create Account
+        </button>
+
+        <button
+          class="sign-in-btn"
+          onclick="window.location.href='account/login.html'"
+          type="button">
+          Sign In
+        </button>
+
+      </div>
+      <a class="guest-link" href="guest/guestCreateSong.html">
+        Continue as Guest
+      </a>
+
+    </main>
 </body>
-</html>
+
