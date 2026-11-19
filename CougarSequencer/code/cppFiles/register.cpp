@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include "../hFiles/account/register.h"
-// #include "../hFiles/account/userId.h"
+#include "helper.hpp"
 
 using namespace std;
 
@@ -15,13 +15,13 @@ string registerUser(const string& username, const string& password, int& id, pqx
         pqxx::work txn(conn);
 
         // how to do SQL in C++, sending these parameters of what SQL code you want to run and the parameters that you want to insert
-        txn.exec_params( // txn.exec for mac txn.exec_params for WSL
+        exec_p(txn, 
         "INSERT INTO users (user_name, pass_word) VALUES ($1, $2)",
         username, password
         );
 
         // If it worked - they chose a username that no one else had
-        auto result = txn.exec_params( // txn.exec for mac txn.exec_params for WSL
+        auto result = exec_p(txn,
         "SELECT id FROM users WHERE user_name = $1",
         username
         );

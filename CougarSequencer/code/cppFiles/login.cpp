@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include "..//hFiles/account/login.h"
-// #include "../hFiles/account/userId.h"
+#include "helper.hpp"
 
 using namespace std;
 
@@ -14,7 +14,7 @@ string loginUser(const string& username, const string& password, int& id, pqxx::
         pqxx::work txn(conn);
 
         // how to do SQL in C++, sending these parameters of what SQL code you want to run and the parameters that you want to select
-        auto result = txn.exec_params( // txn.exec for mac txn.exec_params for WSL
+        auto result = exec_p(txn,
         "SELECT pass_word FROM users WHERE user_name = $1",
         username
         );
@@ -25,7 +25,7 @@ string loginUser(const string& username, const string& password, int& id, pqxx::
 
         // check to see if the password corresponds with the username they selected
         if (password == result[0][0].c_str()){
-            result = txn.exec_params( // txn.exec for mac txn.exec_params for WSL
+            result = exec_p(txn,
             "SELECT id FROM users WHERE user_name = $1",
             username
             );
