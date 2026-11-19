@@ -53,7 +53,8 @@
         }
         
         button:hover{
-            background-color: #0E7490;
+            background-color: #38BDF8;
+            color: #032B44;
         }
 
         /* For groups of buttons */
@@ -79,12 +80,6 @@
         /* For text boxes */
         .input{
             margin-bottom:16px;
-        }
-
-        /* For Home Page */
-        .greeter{
-            position: fixed;
-            top: 5%;
         }
 
         /* For Song Manager */
@@ -128,10 +123,13 @@
             color: #FFFFFF;
         }
 
-        .nav-links a {
+        .greeterBtn {
             color: #38BDF8;
             text-decoration: none;
             font-size: 16px;
+            cursor: pointer;
+            margin-left: auto;
+            text-align: right;
         }
 
         /*Main Welcome Section */
@@ -173,7 +171,6 @@
             font-weight: bold;
         }
 
-        
 
         /* Create Account */
         .create-account-btn {
@@ -211,6 +208,6 @@
         }
 
         .guest-link:hover,
-        .nav-links a:hover {
+        .greeterBtn:hover {
             color: #FFFFFF;
         }
