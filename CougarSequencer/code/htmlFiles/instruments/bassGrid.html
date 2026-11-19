@@ -11,6 +11,19 @@
 </head>
 <body>
      <div class="sequencer-container">
+        <div class= "sequencer-layout-wrapper">
+            <div class="top-controls-panel">
+                <!--This is to go back--> 
+                <button class = "sendBtn" id = "backBtn" onclick = "history.back()" type = "button" aria-label = "Back Button" title = "Back"> Back</button>
+                <div class ="playback-cluster">
+     <!--This is to play-->
+                    <button class = "btn" id = "playBtn" type = "button" aria-label = "Play Button" title = "Play"> ▶</button>
+    <!--This is to pause-->
+                    <button class = "btn" id = "pauseBtn" type = "button" aria-label = "Pause Button" title = "Pause" style="display: none;"> ⏸</button>
+                </div>
+
+           </div>
+
         <h1 class="sequencer-title">Bass</h1>
         <div class="sequencer-layout">
             <div class="labels-container" id="labelsColumn"></div>
@@ -30,31 +43,6 @@
         <label for="volume">Volume</label>
     </div>
 
-    <!--This is to go back-->
-    <button class = "sendBtn"
-            id = "backBtn"
-            onclick = "history.back()"
-            type = "button"
-            aria-label = "Back Button"
-            title = "Back">
-            Back</button>
-
-    <!--This is to play-->
-    <button class = "btn"
-            id = "playBtn"
-            type = "button"
-            aria-label = "Play Button"
-            title = "Play">
-            ▶</button>
-    
-    <!--This is to pause-->
-    <button class = "btn"
-            id = "pauseBtn"
-            type = "button"
-            aria-label = "Pause Button"
-            title = "Pause"
-            style="display: none;">
-            ⏸</button>
 
     <!--This is the Bpm text box and button-->
     <div class="bpm">
@@ -76,4 +64,5 @@
     <script src="../jsFiles/openProject.js"></script> -->
     <script src="../../jsFiles/stopWatch.js"></script>
 </body>
+</html>
 </html>
