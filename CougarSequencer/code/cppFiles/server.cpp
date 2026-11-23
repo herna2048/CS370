@@ -3,20 +3,15 @@
 #include <pqxx/pqxx> // client for PostGreSQL
 #include <exception> // for throwing exceptions
 #include <string>
+
 #include "../hFiles/crow_all.h" // API
+#include "../hFiles/userId.h"
+#include "../hFiles/dbLogin.h"
 #include "../hFiles/greeter.h"
 #include "../hFiles/account/register.h"
 #include "../hFiles/account/login.h"
 
 using namespace std;
-
-// The users information
-class user {
-    public:
-        int id = 0;
-        string username = "guestUser";  
-        string password = "NoPassWord";
-};
 
 // All of the rules for the crow for POST, GET, etc...
 struct CORSRules {
@@ -31,14 +26,15 @@ struct CORSRules {
 
 int main() {
 
-// Connect to the PostGreSQL server through a hardcoded host, port, etc...
+// Connect to the PostGreSQL server 
+string connStr = dbLogin();
+user u(1, "guestUser");
+  
 try {
-pqxx::connection conn("host=localhost port=5432 dbname=CougarSequencer user=postgres password=Baseball712 connect_timeout=3");
+pqxx::connection conn(connStr);
 
 // creating the app for the crow in order to connect to the server
 crow::App<CORSRules> app;
-
-user u;
 
 // initializing the response code to be 204 for no content
 CROW_ROUTE(app, "/<path>").methods(crow::HTTPMethod::OPTIONS)
@@ -55,6 +51,16 @@ CROW_ROUTE(app, "/api/greeter").methods(crow::HTTPMethod::GET)
     res["greeter"] = createGreeting(); // Returns your greeting string
     return crow::response(200, res);
 });
+
+// the get for the userInfo button, when you push it, you send out a request which this function then sends back through res["userInfo"], reads data
+CROW_ROUTE(app, "/api/userInfo").methods(crow::HTTPMethod::GET)
+([&u]() {
+    crow::json::wvalue res;
+
+    res["id"] = u.getId(); // Returns your username
+    res["username"] = u.getUsername(); // Returns your username
+    return crow::response(200, res);
+});
         
 // the POST for when you request to submit data for the database to insert in username and password
 CROW_ROUTE(app, "/api/register").methods(crow::HTTPMethod::POST)
@@ -65,13 +71,12 @@ CROW_ROUTE(app, "/api/register").methods(crow::HTTPMethod::POST)
         return crow::response(400, "{\"error\": \"Missing name field\"}");
     }
 
-    u.username = body["username"].s();
-    u.password = body["password"].s();
-    u.id = body["id"].i();
+    u.setUsername(body["username"].s());
+    u.setId(body["id"].i());
 
     crow::json::wvalue res;
     // Call function defined in register.cpp
-    res["register"] = registerUser(u.username, u.password, u.id, conn);
+    res["register"] = registerUser(u.getUsername(), body["password"].s(), u, conn);
 
     crow::response response(res);
     response.set_header("Content-Type", "application/json");
@@ -87,27 +92,25 @@ CROW_ROUTE(app, "/api/login").methods(crow::HTTPMethod::POST)
         return crow::response(400, "{\"error\": \"Missing name field\"}");
     }
 
-    u.username = body["username"].s();
-    u.password = body["password"].s();
-    u.id = body["id"].i();
+    u.setUsername(body["username"].s());
+    u.setId(body["id"].i());
 
     crow::json::wvalue res;
     // Call function defined in login.cpp
-    res["login"] = loginUser(u.username, u.password, u.id, conn);
+    res["login"] = loginUser(u.getUsername(), body["password"].s(), u, conn);
 
     crow::response response(res);
     response.set_header("Content-Type", "application/json");
     return response;
 });
 
-// the POST for when you request to submit data for the database to select the username to see if it has a corresponding password
+// the PUT for when you request to submit data for the database to select the username to see if it has a corresponding password
 CROW_ROUTE(app, "/api/logOut").methods(crow::HTTPMethod::PUT)
 ([&conn, &u](const crow::request& req) {
     auto body = crow::json::load(req.body);
 
-    u.username = body["username"].s();
-    u.password = body["password"].s();
-    u.id = body["id"].i();
+    u.setUsername(body["username"].s());
+    u.setId(body["id"].i());
 
     crow::json::wvalue res;
     res["status"] = "updated";

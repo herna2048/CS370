@@ -104,7 +104,11 @@
             </div> 
     </div>
 
-        <script src="../../jsFiles/account/logOut.js"></script>
         <script src="../../jsFiles/getUserinfo.js"></script>
+        <script>
+            const u = user.load();
+            document.getElementById("userGreeting").innerText = u.greet();
+        </script>
+        <script src="../../jsFiles/account/logOut.js"></script>
     </body>
 </html>

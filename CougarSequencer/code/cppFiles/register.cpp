@@ -7,7 +7,7 @@
 using namespace std;
 
 // create a function that sends a string for whether it was successful in creating a user or not
-string registerUser(const string& username, const string& password, int& id, pqxx::connection& conn) {
+string registerUser(const string& username, const string& password, user& u, pqxx::connection& conn) {
     try {
         cout << "[DEBUG] Starting insert for user: " << username << endl;
 
@@ -26,7 +26,7 @@ string registerUser(const string& username, const string& password, int& id, pqx
         username
         );
 
-        id = stoi(result[0][0].c_str());
+        u.setId(stoi(result[0][0].c_str()));
 
         // commit the insert
         txn.commit();
@@ -35,10 +35,14 @@ string registerUser(const string& username, const string& password, int& id, pqx
     } 
     catch (const pqxx::unique_violation& e) { // this is if it wasn't a valid username and it was already taken
         cerr << "[DB WARNING] Unique constraint violation: " << e.what() << endl;
+        u.setId(1);
+        u.setUsername("guestUser");
         return "This user name is already taken. Please try again";
     }
     catch (const exception& e) { // if something went wrong with what was inserted by the user or other external factor
         cerr << "[DB ERROR] Query failed: " << e.what() << endl;
+        u.setId(1);
+        u.setUsername("guestUser");
         return "error";
     }
 }

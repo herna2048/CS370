@@ -6,7 +6,7 @@
 
 using namespace std;
 
-string loginUser(const string& username, const string& password, int& id, pqxx::connection& conn) {
+string loginUser(const string& username, const string& password, user& u, pqxx::connection& conn) {
     try {
         cout << "[DEBUG] Starting select for user: " << username << endl;
 
@@ -30,7 +30,7 @@ string loginUser(const string& username, const string& password, int& id, pqxx::
             username
             );
 
-            id = stoi(result[0][0].c_str());
+            u.setId(stoi(result[0][0].c_str()));
 
             return "success"; // If it worked - they choose a username that no one else had
         }
@@ -39,6 +39,8 @@ string loginUser(const string& username, const string& password, int& id, pqxx::
     } 
  catch(const exception& e) { // if something went wrong with what was inserted by the user or other external factor
         cerr << "[DB ERROR] Query failed: " << e.what() << endl;
+        u.setId(1);
+        u.setUsername("guestUser");
         return "There was something wrong with your username or password. Please try again.";
     }
 }

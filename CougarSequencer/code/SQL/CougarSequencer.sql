@@ -1,7 +1,7 @@
 -- CougarSequencer ERD
 
--- DROP TABLE IF EXISTS songs CASCADE;
--- DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS songs CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE IF NOT EXISTS users (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -27,8 +27,8 @@ INSERT INTO users (user_name, pass_word) VALUES
 ('CoolUser1',   'Secretpassword123');
 
 INSERT INTO songs (user_id, song_name, track) VALUES
-(1,
-'My first song',
+(2,
+'Song 1',
 '{"tracks": [
     {
         "instrument": "Piano",
@@ -50,6 +50,6 @@ INSERT INTO songs (user_id, song_name, track) VALUES
 SELECT * FROM users;
 SELECT * FROM songs;
 
-SELECT max(id) FROM users;
-SELECT nextval(pg_get_serial_sequence('users', 'id'));
-SELECT setval(pg_get_serial_sequence('users', 'id'), COALESCE(max(id), 1)) FROM users;
+-- SELECT max(id) FROM users;
+-- SELECT nextval(pg_get_serial_sequence('users', 'id'));
+-- SELECT setval(pg_get_serial_sequence('users', 'id'), COALESCE(max(id), 1)) FROM users;
