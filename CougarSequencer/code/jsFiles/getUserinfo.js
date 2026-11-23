@@ -1,5 +1,5 @@
 class instrument {
-    bpm = 60;
+    bpm 60;
 
     constructor(b) {
     this.bpm = b;
@@ -13,6 +13,10 @@ class instrument {
         const i = JSON.parse(sessionStorage.getItem("instrument"));
 
         return new user(i.bpm);
+    }
+
+    set bpm(b) {
+        // this.bpm = b;
     }
 
     get bpm() {

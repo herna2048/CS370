@@ -1,4 +1,5 @@
-const instru = instrument.load();
+const instru = new instrument(60).save();
+console.log(instru.bpm);
 const tempoMeter = document.getElementById("tempoMeter"); // get the tempo meter
 mspb = 1000, loc = 1;
 
@@ -10,9 +11,10 @@ let running = false;
 document.getElementById('bpmBtn').addEventListener('click', () => {
     if (document.getElementById("bpmNum").value <= 0 || document.getElementById("bpmNum").value > 500) document.getElementById("bpmNum").value = instru.bpm; // the bpm is less than or equal to 0
 
+    console.log(instru.bpm);
+
     // set bpmNum to either what it was originally or the new valid bpmNum
-    new instrument(document.getElementById("bpmNum").value).save();
-    const instru = instrument.load();
+    const instru = new instrument(document.getElementById("bpmNum").value).save();
     document.getElementById('bpmNum').placeholder = `bmp = ${instru.bpm}`;
     mspb = (1 / (instru.bpm / 60)) * 1000; // bpm / 60 is beatsPerSec, 1 / bps is secsPerBeat, 1000 * spb is millisecondsPerBeat
 
