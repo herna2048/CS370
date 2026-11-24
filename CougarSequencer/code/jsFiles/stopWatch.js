@@ -1,25 +1,19 @@
-const instru = new instrument(60).save();
-console.log(instru.bpm);
+const instru = instrument.load();
+document.getElementById("bpmNum").placeholder = `bpm = ${instru.bpm}`;
+document.getElementById("bpmNum").value = instru.bpm;
+
 const tempoMeter = document.getElementById("tempoMeter"); // get the tempo meter
-mspb = 1000, loc = 1;
+mspb = (1 / (instru.bpm / 60)) * 1000; 
+loc = 1;
 
 const display = document.getElementById("display"); // get the display
 let updateTimer = null, updateTempoMeter = null;
 let startTime = 0, elapsedTime = 0, seconds = 0, minutes = 0;
 let running = false;
 
-document.getElementById('bpmBtn').addEventListener('click', () => {
-    if (document.getElementById("bpmNum").value <= 0 || document.getElementById("bpmNum").value > 500) document.getElementById("bpmNum").value = instru.bpm; // the bpm is less than or equal to 0
-
-    console.log(instru.bpm);
-
-    // set bpmNum to either what it was originally or the new valid bpmNum
-    const instru = new instrument(document.getElementById("bpmNum").value).save();
-    document.getElementById('bpmNum').placeholder = `bmp = ${instru.bpm}`;
-    mspb = (1 / (instru.bpm / 60)) * 1000; // bpm / 60 is beatsPerSec, 1 / bps is secsPerBeat, 1000 * spb is millisecondsPerBeat
-
-    // make the timer go back to zero every time the tempo is changed
-    reset();
+document.getElementById('bpmNum').addEventListener('keydown', (event) => {
+    if(event.key == 'Enter' && document.getElementById("bpmNum").value != instru.bpm) 
+        changeBpm();
 });
 
 document.getElementById('playBtn').addEventListener('click', () => {   
@@ -43,6 +37,20 @@ document.getElementById('playBtn').addEventListener('click', () => {
 document.getElementById('pauseBtn').addEventListener('click', () => {
     pause();
 });
+
+function changeBpm() {
+    if (document.getElementById("bpmNum").value <= 0 || document.getElementById("bpmNum").value > 500) 
+        document.getElementById("bpmNum").value = instru.bpm; // the bpm is less than or equal to 0
+
+    // set bpmNum to either what it was originally or the new valid bpmNum
+    instru.bpm = parseInt(document.getElementById("bpmNum").value);
+    instru.save();
+    document.getElementById('bpmNum').placeholder = `bmp = ${instru.bpm}`;
+    mspb = (1 / (instru.bpm / 60)) * 1000; // bpm / 60 is beatsPerSec, 1 / bps is secsPerBeat, 1000 * spb is millisecondsPerBeat
+
+    // make the timer go back to zero every time the tempo is changed
+    reset();
+}
 
 function pause(){
     if(running){

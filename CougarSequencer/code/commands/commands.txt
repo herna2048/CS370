@@ -20,7 +20,7 @@ Outside:
 wsl --shutdown
 
 To build and compile all of the files (Mac)
-g++ -std=c++20 server.cpp register.cpp greeter.cpp login.cpp \
+g++ -std=c++20 server.cpp dbLogin.cpp register.cpp greeter.cpp login.cpp \
   -DASIO_NO_DEPRECATED=0 \
   -I/opt/homebrew/include \
   -L/opt/homebrew/lib \

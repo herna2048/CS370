@@ -16,10 +16,16 @@
                 <!--This is to go back--> 
                 <button class = "sendBtn" id = "backBtn" onclick = "history.back()" type = "button" aria-label = "Back Button" title = "Back"> Back</button>
                 <div class ="playback-cluster">
-     <!--This is to play-->
+                    <!--This is to play-->
                     <button class = "btn" id = "playBtn" type = "button" aria-label = "Play Button" title = "Play"> ▶</button>
-    <!--This is to pause-->
+                    <!--This is to pause-->
                     <button class = "btn" id = "pauseBtn" type = "button" aria-label = "Pause Button" title = "Pause" style="display: none;"> ⏸</button>
+                    <input type="text" class="input" id="bpmNum"/>
+                    <!-- The volume slider -->
+                    <div class = "volumeSlider"> 
+                        <input type="range" id="volume" min="0" max="100" value="70"> 
+                        <label for="volume">Volume</label>
+                    </div>
                 </div>
 
            </div>
@@ -33,23 +39,6 @@
             <div id="display">
                 00:00
             </div>
-        </div>
-    </div>
-
-    
-    <!-- The volume slider -->
-    <div class = "volumeSlider"> 
-        <input type="range" id="volume" min="0" max="100" value="70"> 
-        <label for="volume">Volume</label>
-    </div>
-
-    
-
-    <!--This is the Bpm text box and button-->
-    <div class="bpm">
-        <div class="form-row">
-            <input type="text" class="input" id="bpmNum" placeholder="bpm = 60" /><br>
-            <button id="bpmBtn" type="submit">Send</button>
         </div>
     </div>
 

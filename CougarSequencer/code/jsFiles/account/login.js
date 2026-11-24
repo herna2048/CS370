@@ -15,7 +15,8 @@
       const data = await response.json();
     // if the user had inputs a valid username and password, they can move onto the grid.html, else they are sent the error message and try again
       if (data.login === "success"){
-        new user(id, username).save();
+        const u = new user(id, username);
+        u.save();
         window.location.replace("../../htmlFiles/account/songManager.html");
       }
       else

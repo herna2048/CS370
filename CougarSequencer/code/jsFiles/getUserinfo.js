@@ -1,8 +1,12 @@
 class instrument {
-    bpm 60;
+    bpm = 60;
 
-    constructor(b) {
-    this.bpm = b;
+    constructor(b = 60) {
+        this.bpm = b;
+        this.instruName = "instrument";
+        this.row = 24; 
+        this.col = 24;
+        this.scaleNotes=['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
     }
 
     save() {
@@ -12,11 +16,14 @@ class instrument {
     static load() {
         const i = JSON.parse(sessionStorage.getItem("instrument"));
 
-        return new user(i.bpm);
+        if(i == null)
+            i.bpm = 60;
+
+        return new instrument(i.bpm);
     }
 
     set bpm(b) {
-        // this.bpm = b;
+        this.bpm = b;
     }
 
     get bpm() {
@@ -25,6 +32,38 @@ class instrument {
 
     static clear() {
         sessionStorage.removeItem('instrument');
+    }
+}
+
+class piano extends instrument {
+    constructor() {
+        super(instruName);
+        super(row);
+        super(col);
+        super(scaleNotes);
+        this.name = "Piano";
+    }
+}
+
+class drums extends instrument {
+    constructor() {
+        super(instruName);
+        super(row);
+        super(col);
+        super(scaleNotes);
+        this.name = "Drums";
+        this.row = 7;
+        this.scaleNotes=['Bass Drum', 'Snare', 'Floor Toms', 'Tom-Tom', 'Ride', 'Hi-Hat', 'Crash'];
+    }
+}
+
+class bass extends instrument {
+    constructor() {
+        super(instruName);
+        super(row);
+        super(col);
+        super(scaleNotes);
+        this.name = "Bass";
     }
 }
 
