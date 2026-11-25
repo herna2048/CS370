@@ -41,18 +41,7 @@ for(let r = 0; r < row; r++) {
         cell.dataset.row = r;
         cell.dataset.col = c;
         cell.dataset.note = generatedNotes[r]; // Assign the note to the cell's dataset
-        cell.dataset.row = r;
-        cell.dataset.col = c;
-        cell.dataset.note = generatedNotes[r]; // Assign the note to the cell's dataset
 
-        cell.addEventListener('click',async () => {
-             await Tone.start(); // Ensure Tone.js is started before playing sound
-             cell.classList.toggle('active');
-
-             if (cell.classList.contains('active') && isLoaded) {
-                piano.triggerAttackRelease(generatedNotes[r], '8n');// Play the note when the cell is activated
-             }
-     });
         cell.addEventListener('click',async () => {
              await Tone.start(); // Ensure Tone.js is started before playing sound
              cell.classList.toggle('active');
@@ -64,8 +53,6 @@ for(let r = 0; r < row; r++) {
 
         cell.style.gridRow = `${r+1}`;
         cell.style.gridColumn = `${c+1}`;
-        grid.appendChild(cell);    
-        columns[c].push(cell); // Store the cell reference in the corresponding column   
         grid.appendChild(cell);    
         columns[c].push(cell); // Store the cell reference in the corresponding column   
     }   
@@ -107,16 +94,14 @@ UpdateVolume(); // Initialize volume on page load
 Tone.getTransport().bpm.value = 60; // Set the initial BPM to 60
 
 bpmInput.addEventListener('keydown', (event) => {
-    if(event.key == 'Enter')
-    {
+    if(event.key === 'Enter') {
         const bpmValue = parseInt(bpmInput.value,10);
-
         if (!isNaN(bpmValue) && bpmValue >= 20 && bpmValue <= 300) {
             Tone.getTransport().bpm.value = bpmValue;
             Tone.getTransport().stop(); // Stop the transport to apply the new BPM
             currentStep = 0; // Reset the current step to 0
+        }
     }
-}
 });
 
 
@@ -136,7 +121,7 @@ const loop =new Tone.Loop((time) => {
     }
 
     currentStep = (currentStep + 1) % col; // Move to the next step, wrapping around
-}, '4n'); // Set the loop interval to an eighth note
+}, '4n'); // Set the loop interval to quarter note
 
 loop.start(0); // Start the loop at the beginning of the transport
 //pause and play buttons

@@ -110,7 +110,8 @@ function updateTime(){
         
         display.textContent = `${minutes}:${seconds}`;
         
-        pause();
+        reset();
+        document.getElementById('playBtn').dispatchEvent(new Event("click"));
     }
 }
 
@@ -122,6 +123,7 @@ function updateTempo(){
     else{
         tempoMeter.style.justifySelf = `end`;
         loc = col;
-        pause();
+        reset();
+        document.getElementById('playBtn').dispatchEvent(new Event("click"));
     }
 }

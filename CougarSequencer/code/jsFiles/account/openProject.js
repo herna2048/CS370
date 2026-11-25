@@ -14,6 +14,14 @@ document.getElementById('selectSong').addEventListener('click', async () => {
 // if the project can open, they can move onto the grid.html, else they are sent the error message and try again
   if (data.openProject === "success") {
     const proj = new project(data.bmp, data.grids);
+    proj.save();
+    const allGrid = p.grid;
+    const pG = allGrid.Piano;
+    const pianoGrid = new Grid("Piano", pG);
+    const dG = allGrid.Drums;
+    const drumsGrid = new Grid("Drums", dG);
+    const bG = allGrid.Bass;
+    const bassGrid = new Grid("Bass", bG);
     window.location.href = "accountCreateSong.html";
   }
   else

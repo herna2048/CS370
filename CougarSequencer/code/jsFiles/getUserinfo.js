@@ -26,7 +26,15 @@ class project {
 
     get bpm() {
         return `${this.bpm}`;
-    }    
+    }   
+    
+    set grid(g) {
+        this.grid = g;
+    }
+
+    get grid() {
+        return `${this.grid}`
+    }
 
     static clear() {
         sessionStorage.removeItem('project');
@@ -36,11 +44,11 @@ class project {
 class Grid {
     constructor(sN, json) {
         this.instruName = "instrument";
-        this.notes = typeof json === "string" ? JSON.parse(json) : json;
+        this.instruProp = typeof json === "string" ? JSON.parse(json) : json;
     }
 
     save() {
-        sessionStorage.setItem('grid', JSON.stringify({instruName: this.instruName, notes: this.notes}));
+        sessionStorage.setItem('grid', JSON.stringify({instruName: this.instruName, instruProp: this.instruProp}));
     }
 
     static load() {
@@ -50,7 +58,15 @@ class Grid {
             return new Grid("instrument", []);
         }
 
-        return new project(p.instruName, p.notes);
+        return new Grid(p.instruName, p.notes);
+    }
+
+    set instruProp(i) {
+        this.instruProp = i;
+    }
+
+    get instruProp() {
+        return this.instruProp;
     }
 
     static clear() {
@@ -59,70 +75,46 @@ class Grid {
 }
 
 class instrument {
-    constructor() {
-        this.row = 24; 
-        this.col = 24;
-        this.scaleNotes=['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+    constructor(v, sN, r, c, s, json) {
+        this.volume = v;
+        this.scaleNotes = sN;
+        this.row = r;
+        this.col = c;
+        this.sample = s;
+        this.notes = typeof json === "string" ? JSON.parse(json) : json;
     }
 
     save() {
-        sessionStorage.setItem('instrument', JSON.stringify({bpm: this.bpm}));
+        sessionStorage.setItem('instrument', JSON.stringify({
+            volume: this.volume,
+            scaleNotes: this.scaleNotes,
+            row: this.row,
+            col: this.col,
+            sample: this.sample,
+            notes: this.notes
+        }));
     }
 
     static load() {
         const i = JSON.parse(sessionStorage.getItem("instrument"));
 
         if(i == null)
-            i.bpm = 60;
-
-        return new instrument(i.bpm);
-    }
-
-    set bpm(b) {
-        this.bpm = b;
-    }
-
-    get bpm() {
-        return `${this.bpm}`;
-    }    
+            return new instrument(50, [], 0, 0, {}, []);
+    
+        return new instrument(
+            i.volume,
+            i.scaleNotes,
+            i.row,
+            i.col,
+            i.sample,
+            i.notes);
+    }  
 
     static clear() {
         sessionStorage.removeItem('instrument');
     }
 }
-
-
-// class piano extends instrument {
-//     constructor() {
-//         super(instruName);
-//         super(row);
-//         super(col);
-//         super(scaleNotes);
-//         this.name = "Piano";
-//     }
-// }
-
-// class drums extends instrument {
-//     constructor() {
-//         super(instruName);
-//         super(row);
-//         super(col);
-//         super(scaleNotes);
-//         this.name = "Drums";
-//         this.row = 7;
-//         this.scaleNotes=['Bass Drum', 'Snare', 'Floor Toms', 'Tom-Tom', 'Ride', 'Hi-Hat', 'Crash'];
-//     }
-// }
-
-// class bass extends instrument {
-//     constructor() {
-//         super(instruName);
-//         super(row);
-//         super(col);
-//         super(scaleNotes);
-//         this.name = "Bass";
-//     }
-// }
 
 class user {
     #id = 1;
