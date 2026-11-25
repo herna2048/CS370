@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS songs (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users(id),
     song_name TEXT NOT NULL,
+    bpm INT NOT NULL,
     track JSON NOT NULL
 );
 
@@ -26,9 +27,10 @@ INSERT INTO users (user_name, pass_word) VALUES
 ('guestUser',   'NoPassWord'),
 ('CoolUser1',   'Secretpassword123');
 
-INSERT INTO songs (user_id, song_name, track) VALUES
+INSERT INTO songs (user_id, song_name, bpm, track) VALUES
 (2,
 'Song 1',
+60,
 '{"tracks": [
     {
         "instrument": "Piano",

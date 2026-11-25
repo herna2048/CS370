@@ -35,37 +35,37 @@ class instrument {
     }
 }
 
-class piano extends instrument {
-    constructor() {
-        super(instruName);
-        super(row);
-        super(col);
-        super(scaleNotes);
-        this.name = "Piano";
-    }
-}
+// class piano extends instrument {
+//     constructor() {
+//         super(instruName);
+//         super(row);
+//         super(col);
+//         super(scaleNotes);
+//         this.name = "Piano";
+//     }
+// }
 
-class drums extends instrument {
-    constructor() {
-        super(instruName);
-        super(row);
-        super(col);
-        super(scaleNotes);
-        this.name = "Drums";
-        this.row = 7;
-        this.scaleNotes=['Bass Drum', 'Snare', 'Floor Toms', 'Tom-Tom', 'Ride', 'Hi-Hat', 'Crash'];
-    }
-}
+// class drums extends instrument {
+//     constructor() {
+//         super(instruName);
+//         super(row);
+//         super(col);
+//         super(scaleNotes);
+//         this.name = "Drums";
+//         this.row = 7;
+//         this.scaleNotes=['Bass Drum', 'Snare', 'Floor Toms', 'Tom-Tom', 'Ride', 'Hi-Hat', 'Crash'];
+//     }
+// }
 
-class bass extends instrument {
-    constructor() {
-        super(instruName);
-        super(row);
-        super(col);
-        super(scaleNotes);
-        this.name = "Bass";
-    }
-}
+// class bass extends instrument {
+//     constructor() {
+//         super(instruName);
+//         super(row);
+//         super(col);
+//         super(scaleNotes);
+//         this.name = "Bass";
+//     }
+// }
 
 class user {
     #id = 1;

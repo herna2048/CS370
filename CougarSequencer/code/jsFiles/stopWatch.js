@@ -39,7 +39,7 @@ document.getElementById('pauseBtn').addEventListener('click', () => {
 });
 
 function changeBpm() {
-    if (document.getElementById("bpmNum").value <= 0 || document.getElementById("bpmNum").value > 500) 
+    if (document.getElementById("bpmNum").value <= 0 || document.getElementById("bpmNum").value > 300) 
         document.getElementById("bpmNum").value = instru.bpm; // the bpm is less than or equal to 0
 
     // set bpmNum to either what it was originally or the new valid bpmNum
