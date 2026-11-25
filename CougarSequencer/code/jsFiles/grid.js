@@ -34,10 +34,16 @@ generatedNotes.forEach(noteName=> {
 /*This is a 24 x 24 matrix grid that will store references*/
 const columns=Array.from({length:col }, () => []); 
 
+/*This is a 24 x 24 matrix grid that will store references*/
+const columns=Array.from({length:col }, () => []); 
+
 for(let r = 0; r < row; r++) {
     for(let c = 0; c < col; c++) {
         const cell= document.createElement('div');
         cell.classList.add("cell");
+        cell.dataset.row = r;
+        cell.dataset.col = c;
+        cell.dataset.note = generatedNotes[r]; // Assign the note to the cell's dataset
         cell.dataset.row = r;
         cell.dataset.col = c;
         cell.dataset.note = generatedNotes[r]; // Assign the note to the cell's dataset
@@ -50,9 +56,19 @@ for(let r = 0; r < row; r++) {
                 piano.triggerAttackRelease(generatedNotes[r], '8n');// Play the note when the cell is activated
              }
      });
+        cell.addEventListener('click',async () => {
+             await Tone.start(); // Ensure Tone.js is started before playing sound
+             cell.classList.toggle('active');
+
+             if (cell.classList.contains('active') && isLoaded) {
+                piano.triggerAttackRelease(generatedNotes[r], '8n');// Play the note when the cell is activated
+             }
+     });
 
         cell.style.gridRow = `${r+1}`;
         cell.style.gridColumn = `${c+1}`;
+        grid.appendChild(cell);    
+        columns[c].push(cell); // Store the cell reference in the corresponding column   
         grid.appendChild(cell);    
         columns[c].push(cell); // Store the cell reference in the corresponding column   
     }   
