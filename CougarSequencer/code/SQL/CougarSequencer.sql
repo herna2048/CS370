@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_name TEXT NOT NULL,
     pass_word TEXT NOT NULL,
+    salt TEXT NOT NULL,
     CONSTRAINT uq_users_user_name UNIQUE (user_name)
 );
 
