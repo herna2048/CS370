@@ -1,9 +1,9 @@
-const instru = instrument.load();
-document.getElementById("bpmNum").placeholder = `bpm = ${instru.bpm}`;
-document.getElementById("bpmNum").value = instru.bpm;
+const proj = project.load();
+document.getElementById("bpmNum").placeholder = `bpm = ${proj.bpm}`;
+document.getElementById("bpmNum").value = proj.bpm;
 
 const tempoMeter = document.getElementById("tempoMeter"); // get the tempo meter
-mspb = (1 / (instru.bpm / 60)) * 1000; 
+mspb = (1 / (proj.bpm / 60)) * 1000; 
 loc = 1;
 
 const display = document.getElementById("display"); // get the display
@@ -12,7 +12,7 @@ let startTime = 0, elapsedTime = 0, seconds = 0, minutes = 0;
 let running = false;
 
 document.getElementById('bpmNum').addEventListener('keydown', (event) => {
-    if(event.key == 'Enter' && document.getElementById("bpmNum").value != instru.bpm) 
+    if(event.key == 'Enter' && document.getElementById("bpmNum").value != proj.bpm) 
         changeBpm();
 });
 
@@ -40,13 +40,13 @@ document.getElementById('pauseBtn').addEventListener('click', () => {
 
 function changeBpm() {
     if (document.getElementById("bpmNum").value <= 0 || document.getElementById("bpmNum").value > 300) 
-        document.getElementById("bpmNum").value = instru.bpm; // the bpm is less than or equal to 0
+        document.getElementById("bpmNum").value = proj.bpm; // the bpm is less than or equal to 0
 
     // set bpmNum to either what it was originally or the new valid bpmNum
-    instru.bpm = parseInt(document.getElementById("bpmNum").value);
-    instru.save();
-    document.getElementById('bpmNum').placeholder = `bmp = ${instru.bpm}`;
-    mspb = (1 / (instru.bpm / 60)) * 1000; // bpm / 60 is beatsPerSec, 1 / bps is secsPerBeat, 1000 * spb is millisecondsPerBeat
+    proj.bpm = parseInt(document.getElementById("bpmNum").value);
+    proj.save();
+    document.getElementById('bpmNum').placeholder = `bmp = ${proj.bpm}`;
+    mspb = (1 / (proj.bpm / 60)) * 1000; // bpm / 60 is beatsPerSec, 1 / bps is secsPerBeat, 1000 * spb is millisecondsPerBeat
 
     // make the timer go back to zero every time the tempo is changed
     reset();

@@ -1,7 +1,7 @@
 #include <pqxx/pqxx>
 #include <iostream>
 #include <string>
-#include "..//hFiles/account/login.h"
+#include "../hFiles/account/login.h"
 #include "helper.hpp"
 
 using namespace std;

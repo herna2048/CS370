@@ -15,7 +15,7 @@
     <body>
         <h1> Song Manager </h1>
         <h2 id="userGreeting"></h2>
-        <h4> Edit, Delete or Create Songs here! </h4>
+        <h4 id="response"> Edit, Delete or Create Songs here! </h4>
         <hr>
 
         <button id = "backBtn"
@@ -56,12 +56,11 @@
             <!-- Song Boxes-->
             <div class = "songBox" id = "song1">
                 <iframe src = "" width = "100%" height = "200"></iframe>
-                <h2> Song 1 </h2>
+                <h2 id="song_name"> Song 1 </h2>
                 <hr>
 
                 <button
                     id = "selectSong"
-                    onclick = "window.location.replace('accountCreateSong.html')"
                     aria-label = "Select Song Button"
                     title = "Select Song"> 
                     Select 
@@ -110,5 +109,6 @@
             document.getElementById("userGreeting").innerText = u.greet();
         </script>
         <script src="../../jsFiles/account/logOut.js"></script>
+        <script src="../../jsFiles/account/openProject.js"></script>
     </body>
 </html>

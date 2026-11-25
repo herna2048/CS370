@@ -1,0 +1,1 @@
+-I"C:/Users/Michael/CS370/build/_deps/freetype-build/include/freetype/config" -isystem "C:/Users/Michael/CS370/build/_deps/freetype-build/include" -isystem "C:/Users/Michael/CS370/build/_deps/freetype-src/include" -isystem "C:/Users/Michael/CS370/build/_deps/harfbuzz-src/src"

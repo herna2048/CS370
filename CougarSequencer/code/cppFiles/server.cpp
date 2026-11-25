@@ -3,6 +3,7 @@
 #include <pqxx/pqxx> // client for PostGreSQL
 #include <exception> // for throwing exceptions
 #include <string>
+#include <nlohmann/json.hpp>
 
 #include "../hFiles/crow_all.h" // API
 #include "../hFiles/userId.h"
@@ -10,6 +11,8 @@
 #include "../hFiles/greeter.h"
 #include "../hFiles/account/register.h"
 #include "../hFiles/account/login.h"
+#include "../hFiles/account/openProject.h"
+// #include "../hFiles/account/saveProject.h"
 
 using namespace std;
 
@@ -117,23 +120,30 @@ CROW_ROUTE(app, "/api/logOut").methods(crow::HTTPMethod::PUT)
     return crow::response(200, res);;
 });
 
-// // the POST for when you request the data for the database for the specific song
-// CROW_ROUTE(app, "/api/openProject").methods(crow::HTTPMethod::POST)
-// ([&conn](const crow::request& req) {
-//     auto body = crow::json::load(req.body);
-//     // check to see if there is a body and it contains what we had sent over in the js
-//     if (!body || !body.has("/*temp parameter*/") || !body.has("/*temp parameter*/")) {
-//         return crow::response(400, "{\"error\": \"Missing name field\"}");
-//     }
+// the POST for when you request the data for the database for the specific song
+CROW_ROUTE(app, "/api/openProject").methods(crow::HTTPMethod::POST)
+([&conn, &u](const crow::request& req) {
+    auto body = crow::json::load(req.body);
 
-//     crow::json::wvalue res;
-//     // Call function defined in saveProject.cpp
-//     res["openProject"] = openProject(/*temp parameter*/, conn);
+    // check to see if there is a body and it contains what we had sent over in the js
+    if (!body || !body.has("song_name")) {
+        return crow::response(400, "{\"error\": \"Missing song name field\"}");
+    }
 
-//     crow::response response(res);
-//     response.set_header("Content-Type", "application/json");
-//     return response;
-// });
+    project p(u, body["song_name"].s());
+  
+    // Call the specific Postgres and CPP JSON
+    nlohmann::json out;
+
+    // Call function defined in saveProject.cpp
+    out["openProject"] = openProject(p, conn);
+    out["bpm"] = p.getBpm();
+    out["grids"] = p.getGrid();
+
+    crow::response res(out.dump());
+    res.add_header("Content-Type", "application/json");
+    return res;
+});
 
 // // the POST for when you request to submit data for the database for the specific song
 // CROW_ROUTE(app, "/api/saveProject").methods(crow::HTTPMethod::POST)

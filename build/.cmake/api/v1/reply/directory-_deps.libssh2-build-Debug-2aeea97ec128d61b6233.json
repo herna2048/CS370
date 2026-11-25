@@ -1,0 +1,54 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"C:/Users/Michael/CS370/build/_deps/libssh2-src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 178,
+				"parent" : 0
+			}
+		]
+	},
+	"codemodelVersion" : 
+	{
+		"major" : 2,
+		"minor" : 11
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "share/doc/SFML",
+			"paths" : 
+			[
+				"C:/Users/Michael/CS370/build/_deps/libssh2-src/COPYING",
+				"C:/Users/Michael/CS370/build/_deps/libssh2-src/NEWS",
+				"C:/Users/Michael/CS370/build/_deps/libssh2-src/README",
+				"C:/Users/Michael/CS370/build/_deps/libssh2-src/RELEASE-NOTES",
+				"C:/Users/Michael/CS370/build/_deps/libssh2-src/docs/AUTHORS",
+				"C:/Users/Michael/CS370/build/_deps/libssh2-src/docs/BINDINGS.md",
+				"C:/Users/Michael/CS370/build/_deps/libssh2-src/docs/HACKING.md"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/libssh2-build",
+		"source" : "C:/Users/Michael/CS370/build/_deps/libssh2-src"
+	}
+}

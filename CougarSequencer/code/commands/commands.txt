@@ -6,10 +6,12 @@ sudo apt install -y build-essential g++ libboost-all-dev libasio-dev libpqxx-dev
 
 Install PostgreSQL server and client
 sudo apt install -y postgresql postgresql-contrib
+brew install nlohmann-json              # macOS
+sudo apt install nlohmann-json3-dev     # Linux
 
-Compile the project with C++17, linking pqxx, pq, boost_system, and pthread
-g++ -std=c++17 server.cpp greeter.cpp register.cpp login.cpp dbLogin.cpp -lpqxx -lpq -lpthread -o server
-g++ -std=c++17 server.cpp greeter.cpp register.cpp login.cpp dbLogin.cpp openProject.cpp saveProject.cpp -lpqxx -lpq -lboost_system -lpthread -o server
+Compile the project with C++17/20, linking pqxx, pq, boost_system, and pthread (Make sure in code folder)
+make
+make clean
 
 On your powershell/terminal make sure your wsl has same IP has host
 notepad $env:USERPROFILE\.wslconfig
@@ -19,13 +21,6 @@ networkingMode=mirrored
 Outside:
 wsl --shutdown
 
-To build and compile all of the files (Mac)
-g++ -std=c++20 server.cpp dbLogin.cpp register.cpp greeter.cpp login.cpp \
-  -DASIO_NO_DEPRECATED=0 \
-  -I/opt/homebrew/include \
-  -L/opt/homebrew/lib \
-  -L/opt/homebrew/opt/libpq/lib \
-  -lpqxx -lpq -lpthread -o server
 
 To run the program
 ./server

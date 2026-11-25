@@ -1,6 +1,7 @@
 #include <pqxx/pqxx>
 #include <iostream>
 #include <string>
+#include <nlohmann/json.hpp>
 #include "../../hFiles/account/saveProject.h"
 
 std::string openProject(const /*temp paramter*/, pqxx::connection& conn) {

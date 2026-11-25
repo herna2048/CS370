@@ -6,7 +6,8 @@ DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE IF NOT EXISTS users (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_name TEXT NOT NULL,
-    pass_word TEXT NOT NULL,
+    pass_word TEXT,
+    salt TEXT,
     CONSTRAINT uq_users_user_name UNIQUE (user_name)
 );
 
@@ -15,7 +16,7 @@ CREATE TABLE IF NOT EXISTS songs (
     user_id INT NOT NULL REFERENCES users(id),
     song_name TEXT NOT NULL,
     bpm INT NOT NULL,
-    track JSON NOT NULL
+    grid JSON NOT NULL
 );
 
 
@@ -23,15 +24,15 @@ CREATE TABLE IF NOT EXISTS songs (
 
 
 -- Users data
-INSERT INTO users (user_name, pass_word) VALUES
-('guestUser',   'NoPassWord'),
-('CoolUser1',   'Secretpassword123');
+INSERT INTO users (user_name, pass_word, salt) VALUES
+('guestUser',   'NoPassWord', 'sha'),
+('CoolUser1',   'Secretpassword123', 'asd');
 
-INSERT INTO songs (user_id, song_name, bpm, track) VALUES
+INSERT INTO songs (user_id, song_name, bpm, grid) VALUES
 (2,
 'Song 1',
 60,
-'{"tracks": [
+'{"grids": [
     {
         "instrument": "Piano",
         "notes": [

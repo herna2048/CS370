@@ -1,9 +1,65 @@
-class instrument {
+class project {
     bpm = 60;
 
-    constructor(b = 60) {
+    constructor(b = 60, json) {
         this.bpm = b;
+        this.grid = typeof json === "string" ? JSON.parse(json) : json;
+    }
+
+    save() {
+        sessionStorage.setItem('project', JSON.stringify({bpm: this.bpm, grid: this.grid}));
+    }
+
+    static load() {
+        const p = JSON.parse(sessionStorage.getItem("project"));
+
+        if(p == null) {   
+            return new project(60, []);
+        }
+
+        return new project(p.bpm, p.grid);
+    }
+
+    set bpm(b) {
+        this.bpm = b;
+    }
+
+    get bpm() {
+        return `${this.bpm}`;
+    }    
+
+    static clear() {
+        sessionStorage.removeItem('project');
+    }
+}
+
+class Grid {
+    constructor(sN, json) {
         this.instruName = "instrument";
+        this.notes = typeof json === "string" ? JSON.parse(json) : json;
+    }
+
+    save() {
+        sessionStorage.setItem('grid', JSON.stringify({instruName: this.instruName, notes: this.notes}));
+    }
+
+    static load() {
+        const g = JSON.parse(sessionStorage.getItem("grid"));
+
+        if(g == null) {   
+            return new Grid("instrument", []);
+        }
+
+        return new project(p.instruName, p.notes);
+    }
+
+    static clear() {
+        sessionStorage.removeItem('grid');
+    }
+}
+
+class instrument {
+    constructor() {
         this.row = 24; 
         this.col = 24;
         this.scaleNotes=['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -34,6 +90,7 @@ class instrument {
         sessionStorage.removeItem('instrument');
     }
 }
+
 
 // class piano extends instrument {
 //     constructor() {
@@ -86,6 +143,11 @@ class user {
 
     static load() {
         const u = JSON.parse(sessionStorage.getItem("user"));
+
+        if(u == null) {
+            u.id = 1;
+            u.username = "guestUser";
+        }
 
         return new user(u.id, u.username);
     }

@@ -34,9 +34,6 @@ generatedNotes.forEach(noteName=> {
 /*This is a 24 x 24 matrix grid that will store references*/
 const columns=Array.from({length:col }, () => []); 
 
-/*This is a 24 x 24 matrix grid that will store references*/
-const columns=Array.from({length:col }, () => []); 
-
 for(let r = 0; r < row; r++) {
     for(let c = 0; c < col; c++) {
         const cell= document.createElement('div');
