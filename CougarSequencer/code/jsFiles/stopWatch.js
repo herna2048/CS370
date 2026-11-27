@@ -16,15 +16,24 @@ document.getElementById('bpmNum').addEventListener('keydown', (event) => {
         changeBpm();
 });
 
-document.getElementById('playBtn').addEventListener('click', () => {   
+document.getElementById('playBtn').addEventListener('click', async () => {   
     if(parseInt(seconds) >= (col - 1) || loc == col)
         reset();
+
+    await Tone.start(); // Ensure Tone.js is started before playing sound
+    loop.start(0);
+    if (!isLoaded) {
+        console.log(`${instru.instruName} is still loading. Please wait...`);
+        return;
+    }
 
     if(!running){
         // increment the time and update it
         startTime = Date.now() - elapsedTime;
         updateTimer = setInterval(updateTime, 10);
         updateTempoMeter = setInterval(updateTempo, mspb);
+
+        Tone.getTransport().start();
 
         // swap
         document.getElementById('playBtn').style.display="none";
@@ -36,6 +45,7 @@ document.getElementById('playBtn').addEventListener('click', () => {
 
 document.getElementById('pauseBtn').addEventListener('click', () => {
     pause();
+    Tone.getTransport().pause();// Pause the transport
 });
 
 function changeBpm() {
@@ -48,6 +58,10 @@ function changeBpm() {
     document.getElementById('bpmNum').placeholder = `bmp = ${proj.bpm}`;
     mspb = (1 / (proj.bpm / 60)) * 1000; // bpm / 60 is beatsPerSec, 1 / bps is secsPerBeat, 1000 * spb is millisecondsPerBeat
 
+    Tone.getTransport().bpm.value = proj.bpm;
+    Tone.getTransport().stop(); // Stop the transport to apply the new BPM
+    currentStep = 0; // Reset the current step to 0
+
     // make the timer go back to zero every time the tempo is changed
     reset();
 }
@@ -58,6 +72,8 @@ function pause(){
         clearInterval(updateTimer);
         clearInterval(updateTempoMeter);
         elapsedTime = Date.now() - startTime;
+
+        Tone.getTransport().pause();// Pause the transport
 
         // swap
         document.getElementById('pauseBtn').style.display="none";
@@ -82,7 +98,7 @@ function reset(){
     
 function updateTime(){
     // set paramters
-    if(parseInt(seconds) < col - 1){
+    if(parseInt(seconds) < col - 1 && currentStep < col){
         // update the current time and subtract it from the start time to get the new difference
         const currentTime = Date.now();
         elapsedTime = currentTime - startTime;
@@ -111,18 +127,21 @@ function updateTime(){
         display.textContent = `${minutes}:${seconds}`;
         
         reset();
+        currentStep=0; // Reset the current step to 0 if it has reached the end
         document.getElementById('playBtn').dispatchEvent(new Event("click"));
     }
 }
 
 function updateTempo(){
-    if(loc < col){
+    if(loc < col && currentStep < col){
         loc++;
         tempoMeter.style.gridColumn = `${loc}`;
     }
     else{
         tempoMeter.style.justifySelf = `end`;
         loc = col;
+        currentStep = 0; // Reset the current step to 0 if it has reached the end
+
         reset();
         document.getElementById('playBtn').dispatchEvent(new Event("click"));
     }

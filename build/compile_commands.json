@@ -1597,14 +1597,14 @@
 },
 {
   "directory": "C:/Users/Michael/CS370/build/_deps/vorbis-build/lib",
-  "command": "\"C:/Coding Software/ucrt64/bin/gcc.exe\"  @CMakeFiles/vorbisfile.dir/includes_C.rsp -g -w -o CMakeFiles/vorbisfile.dir/Unity/unity_0_c.c.obj -c C:/Users/Michael/CS370/build/_deps/vorbis-build/lib/CMakeFiles/vorbisfile.dir/Unity/unity_0_c.c",
-  "file": "C:/Users/Michael/CS370/build/_deps/vorbis-build/lib/CMakeFiles/vorbisfile.dir/Unity/unity_0_c.c",
-  "output": "_deps/vorbis-build/lib/CMakeFiles/vorbisfile.dir/Unity/unity_0_c.c.obj"
-},
-{
-  "directory": "C:/Users/Michael/CS370/build/_deps/vorbis-build/lib",
   "command": "\"C:/Coding Software/ucrt64/bin/gcc.exe\"  @CMakeFiles/vorbisenc.dir/includes_C.rsp -g -w -o CMakeFiles/vorbisenc.dir/vorbisenc.c.obj -c C:/Users/Michael/CS370/build/_deps/vorbis-src/lib/vorbisenc.c",
   "file": "C:/Users/Michael/CS370/build/_deps/vorbis-src/lib/vorbisenc.c",
   "output": "_deps/vorbis-build/lib/CMakeFiles/vorbisenc.dir/vorbisenc.c.obj"
+},
+{
+  "directory": "C:/Users/Michael/CS370/build/_deps/vorbis-build/lib",
+  "command": "\"C:/Coding Software/ucrt64/bin/gcc.exe\"  @CMakeFiles/vorbisfile.dir/includes_C.rsp -g -w -o CMakeFiles/vorbisfile.dir/Unity/unity_0_c.c.obj -c C:/Users/Michael/CS370/build/_deps/vorbis-build/lib/CMakeFiles/vorbisfile.dir/Unity/unity_0_c.c",
+  "file": "C:/Users/Michael/CS370/build/_deps/vorbis-build/lib/CMakeFiles/vorbisfile.dir/Unity/unity_0_c.c",
+  "output": "_deps/vorbis-build/lib/CMakeFiles/vorbisfile.dir/Unity/unity_0_c.c.obj"
 }
 ]

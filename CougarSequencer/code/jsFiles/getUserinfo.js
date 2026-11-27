@@ -1,5 +1,6 @@
 class project {
     bpm = 60;
+    grid = [];
 
     constructor(b = 60, json) {
         this.bpm = b;
@@ -42,17 +43,20 @@ class project {
 }
 
 class Grid {
+    instruName = "instrument";
+    instruProp = [];
+
     constructor(sN, json) {
         this.instruName = "instrument";
         this.instruProp = typeof json === "string" ? JSON.parse(json) : json;
     }
 
-    save() {
-        sessionStorage.setItem('grid', JSON.stringify({instruName: this.instruName, instruProp: this.instruProp}));
+    save(name) {
+        sessionStorage.setItem(`${name}Grid`, JSON.stringify({instruName: this.instruName, instruProp: this.instruProp}));
     }
 
-    static load() {
-        const g = JSON.parse(sessionStorage.getItem("grid"));
+    static load(name) {
+        const g = JSON.parse(sessionStorage.getItem(`${name}Grid`));
 
         if(g == null) {   
             return new Grid("instrument", []);
@@ -69,14 +73,15 @@ class Grid {
         return this.instruProp;
     }
 
-    static clear() {
-        sessionStorage.removeItem('grid');
+    static clear(name) {
+        sessionStorage.removeItem(`${name}Grid`);
     }
 }
 
 class instrument {
 
-    constructor(v, sN, r, c, s, json) {
+    constructor(iN, v, sN, r, c, s, json) {
+        this.instruName = iN;
         this.volume = v;
         this.scaleNotes = sN;
         this.row = r;
@@ -85,8 +90,8 @@ class instrument {
         this.notes = typeof json === "string" ? JSON.parse(json) : json;
     }
 
-    save() {
-        sessionStorage.setItem('instrument', JSON.stringify({
+    save(name) {
+        sessionStorage.setItem(`${name}`, JSON.stringify({
             volume: this.volume,
             scaleNotes: this.scaleNotes,
             row: this.row,
@@ -96,13 +101,14 @@ class instrument {
         }));
     }
 
-    static load() {
-        const i = JSON.parse(sessionStorage.getItem("instrument"));
+    static load(name) {
+        const i = JSON.parse(sessionStorage.getItem(`${name}`));
 
         if(i == null)
-            return new instrument(50, [], 0, 0, {}, []);
+            return new instrument("instrument", 50, [], 0, 0, {}, []);
     
         return new instrument(
+            i.instruName,
             i.volume,
             i.scaleNotes,
             i.row,
@@ -111,8 +117,8 @@ class instrument {
             i.notes);
     }  
 
-    static clear() {
-        sessionStorage.removeItem('instrument');
+    static clear(name) {
+        sessionStorage.removeItem(`${name}`);
     }
 }
 

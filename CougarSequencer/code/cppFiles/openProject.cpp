@@ -11,7 +11,7 @@ using json = nlohmann::json;
 
 string openProject(project& p, pqxx::connection& conn) {
     try {
-        cout << "[DEBUG] Starting insert for user: " << p.getUserUsername() << endl;
+        cout << "[DEBUG] Starting insert for project: " << p.getName() << "at user " << p.getUserUsername() << endl;
 
         // to open a connection between the database and server
         pqxx::work txn(conn);

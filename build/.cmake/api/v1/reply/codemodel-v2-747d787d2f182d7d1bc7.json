@@ -941,7 +941,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "HangmanSFML::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-HangmanSFML-Debug-7d52088cf58f2219d9ed.json",
+					"jsonFile" : "target-HangmanSFML-Debug-eeb450fab3eaaa91de0d.json",
 					"name" : "HangmanSFML",
 					"projectIndex" : 0
 				},
@@ -1053,7 +1053,7 @@
 				{
 					"directoryIndex" : 10,
 					"id" : "mbedtls::@085c30ee5801d290d8db",
-					"jsonFile" : "target-mbedtls-Debug-804418ff649e4974c2f6.json",
+					"jsonFile" : "target-mbedtls-Debug-db2b50dac27375499e5d.json",
 					"name" : "mbedtls",
 					"projectIndex" : 2
 				},
@@ -1074,7 +1074,7 @@
 				{
 					"directoryIndex" : 18,
 					"id" : "sfml-audio::@a153e5727587c53fce98",
-					"jsonFile" : "target-sfml-audio-Debug-1bf2e08224ca13fc3321.json",
+					"jsonFile" : "target-sfml-audio-Debug-9c3b50ab61382567d0b5.json",
 					"name" : "sfml-audio",
 					"projectIndex" : 1
 				},
@@ -1095,7 +1095,7 @@
 				{
 					"directoryIndex" : 6,
 					"id" : "sfml-network::@d7f79968b2699e7782cb",
-					"jsonFile" : "target-sfml-network-Debug-1349365669eaea33ccef.json",
+					"jsonFile" : "target-sfml-network-Debug-803819a42771b506e86c.json",
 					"name" : "sfml-network",
 					"projectIndex" : 1
 				},

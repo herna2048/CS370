@@ -8,6 +8,7 @@
     <!--this section will be used for customization-->
     <link rel="stylesheet" href="../../cssFiles/grid.css">
     <link rel="stylesheet" href="../../cssFiles/style.css">
+    <script src="https://unpkg.com/tone"></script>
 </head>
 <body>
      <div class="sequencer-container">
@@ -30,7 +31,7 @@
 
            </div>
 
-        <h1 class="sequencer-title">Drums</h1>
+        <h1 id="sequencer-title" class="sequencer-title">Drums</h1>
         <div class="sequencer-layout">
             <div class="labels-container" id="labelsColumn"></div>
             <div class="grid-container" id="sequencerGrid">
@@ -44,17 +45,13 @@
     </div>
 
     <script src="../../jsFiles/getUserinfo.js"></script>
-    <script>
-        let row = 7;
-        let col = 24;
-        const scaleNotes=['Bass Drum', 'Snare', 'Floor Toms', 'Tom-Tom', 'Ride', 'Hi-Hat', 'Crash'];
+    <script src="../../jsFiles/grid.js"defer>
+        window.onload = initializePage
     </script>
-    <script src="../../jsFiles/grid.js">
-    // Runs automatically when the window loads
-     window.onload = initializePage;
     </script>
-    <!-- <script src="../jsFiles/saveProject.js"></script> -->
-    <!-- <script src="../jsFiles/openProject.js"></script> -->
-    <script src="../../jsFiles/stopWatch.js" defer></script>
+    <script src="../../jsFiles/play.js"defer>
+        window.onload = initializePage
+    </script>
+    <script src="../../jsFiles/stopWatch.js"></script>
 </body>
 </html>
